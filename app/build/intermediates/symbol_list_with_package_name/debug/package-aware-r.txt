@@ -2584,6 +2584,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id add_task
 id alertTitle
 id aligned
 id all
@@ -2593,6 +2594,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id app_bar_search
 id arc
 id asConfigured
 id async
@@ -3164,6 +3166,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu example_menu
 menu example_menu2
+menu main_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

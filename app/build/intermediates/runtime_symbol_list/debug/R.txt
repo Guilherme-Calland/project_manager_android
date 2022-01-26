@@ -2583,6 +2583,7 @@ int id action_text 0x7f080043
 int id actions 0x7f080044
 int id activity_chooser_view_content 0x7f080045
 int id add 0x7f080046
+int id add_task 0x7f0801dc
 int id alertTitle 0x7f080047
 int id aligned 0x7f080048
 int id all 0x7f080049
@@ -2592,6 +2593,7 @@ int id animateToEnd 0x7f08004c
 int id animateToStart 0x7f08004d
 int id antiClockwise 0x7f08004e
 int id anticipate 0x7f08004f
+int id app_bar_search 0x7f0801dd
 int id arc 0x7f080050
 int id asConfigured 0x7f080051
 int id async 0x7f080052
@@ -3163,6 +3165,7 @@ int layout text_view_with_theme_line_height 0x7f0b0072
 int layout text_view_without_line_height 0x7f0b0073
 int menu example_menu 0x7f0c0000
 int menu example_menu2 0x7f0c0001
+int menu main_menu 0x7f0c0002
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int plurals mtrl_badge_content_description 0x7f0e0000
