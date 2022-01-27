@@ -2626,6 +2626,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_add
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2706,8 +2707,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
-id et_responsible_member
-id et_task_name
+id et_task
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2876,6 +2876,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rv_responsible_list
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
