@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="@color/projectTheme"
-    android:padding="16sp"
+    android:paddingHorizontal="16sp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16sp"
+        android:paddingVertical="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -24,9 +24,11 @@
             android:text="To do:"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:layout_marginLeft="9sp"
             />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_todo_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -39,7 +41,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16sp"
+        android:paddingVertical="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -52,6 +54,7 @@
             android:text="Doing:"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:layout_marginLeft="4sp"
 
             />
 
@@ -67,7 +70,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16sp"
+        android:paddingVertical="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -80,6 +83,7 @@
             android:text="Done:"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:layout_marginLeft="4sp"
             />
 
         <androidx.recyclerview.widget.RecyclerView

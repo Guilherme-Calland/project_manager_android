@@ -12,11 +12,16 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name= "red">#932B2B</color>
-    <color name= "green">#276320</color>
-    <color name= "blue">#224D7A</color>
-    <color name= "purple">#613173</color>
-    <color name= "orange">#8A551C</color>
+    <color name="red">#932B2B</color>
+    <color name="light_red">#DF3636</color>
+    <color name="green">#276320</color>
+    <color name="light_green">#47B33A</color>
+    <color name="blue">#224D7A</color>
+    <color name="light_blue">#418BDA</color>
+    <color name="purple">#613173</color>
+    <color name="light_purple">#A956C8</color>
+    <color name="orange">#8A551C</color>
+    <color name="light_orange">#E48D2E</color>
 
     <!--possible project themes-->
     <color name="projectTheme">#483564</color>

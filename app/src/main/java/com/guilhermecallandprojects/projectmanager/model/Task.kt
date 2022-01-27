@@ -1,5 +1,6 @@
 package com.guilhermecallandprojects.projectmanager.model
 
-class Task(var info: String?, var responsible: String?) {
-
+class Task(info: String, responsible: String) {
+    var info : String = info
+    var responsible : String = responsible
 }

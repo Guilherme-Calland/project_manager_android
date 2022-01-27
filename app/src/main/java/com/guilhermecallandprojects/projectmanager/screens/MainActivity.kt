@@ -11,12 +11,26 @@ import android.widget.SearchView
 import android.widget.Toast
 import android.view.inputmethod.EditorInfo
 import com.guilhermecallandprojects.projectmanager.R
+import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
+import com.guilhermecallandprojects.projectmanager.model.Task
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private val todoTasks = ArrayList<Task>()
+    private val doingTasks = ArrayList<Task>()
+    private val doneTasks = ArrayList<Task>()
+    private val todoTasksAdapter = TodoTasksAdapter(todoTasks)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setActionBarProperties()
+        rv_todo_list.adapter = todoTasksAdapter
+        todoTasks.add(Task("fazer isso", "joao"))
+        todoTasks.add(Task("depois isso", "pedro"))
+        todoTasks.add(Task("depois refaça", "ricardo"))
+        todoTasks.add(Task("depois jogue fora", "joao"))
+        todoTasksAdapter.notifyDataSetChanged()
     }
 
     private fun setActionBarProperties() {

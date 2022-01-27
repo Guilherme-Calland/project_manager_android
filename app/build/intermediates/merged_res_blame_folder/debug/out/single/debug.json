@@ -32,6 +32,10 @@
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable/purple_background.xml"
     },
     {
+        "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/layout_task.xml.flat",
+        "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/layout/task.xml"
+    },
+    {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
     },

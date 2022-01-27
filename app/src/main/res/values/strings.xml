@@ -11,4 +11,6 @@
     <string name="add_new_member_title">Add new member:</string>
     <string name="hint_name">Name</string>
     <string name="add_new_member_text">Add</string>
+    <string name="task_information_for_debug">this is where the task information goes</string>
+    <string name="responsible_for_debug">this is where the responsible goes</string>
 </resources>
