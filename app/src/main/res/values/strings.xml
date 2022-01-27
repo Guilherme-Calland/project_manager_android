@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ProjectManager</string>
+    <string name="new_task_message">New Task</string>
+    <string name="add_hint">Add new task here</string>
+    <string name="member_hint">Responsible member</string>
+    <string name="add_button_text">Add</string>
+    <string name="responsible_members_top">Responsible:</string>
 </resources>

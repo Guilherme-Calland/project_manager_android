@@ -1226,7 +1226,8 @@ color cardview_shadow_end_color
 color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color custom_black
-color custom_gray
+color custom_gray_dark
+color custom_gray_light
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -1751,6 +1752,7 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color projectTheme
 color purple_200
 color purple_500
 color purple_700
@@ -1774,6 +1776,7 @@ color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color tooltip_background_dark
 color tooltip_background_light
+color transparent
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -2449,6 +2452,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_background
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2584,7 +2588,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id add_task
 id alertTitle
 id aligned
 id all
@@ -2594,7 +2597,6 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
-id app_bar_search
 id arc
 id asConfigured
 id async
@@ -2693,6 +2695,8 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id et_responsible_member
+id et_task_name
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2723,6 +2727,8 @@ id home
 id homeAsUp
 id honorRequest
 id horizontal_only
+id i_add
+id i_search
 id icon
 id icon_group
 id ifRoom
@@ -3076,6 +3082,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_task
 layout activity_main
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3197,6 +3204,8 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string add_button_text
+string add_hint
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -3259,6 +3268,7 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string member_hint
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -3295,11 +3305,13 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string mtrl_timepicker_confirm
+string new_task_message
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string responsible_members_top
 string search_menu_title
 string status_bar_notification_info_overflow
 style AlertDialog_AppCompat
