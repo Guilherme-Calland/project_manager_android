@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
@@ -12,24 +13,36 @@ import android.widget.Toast
 import android.view.inputmethod.EditorInfo
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
+import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val todoTasks = ArrayList<Task>()
+    private var todoTasks = ArrayList<Task>()
     private val doingTasks = ArrayList<Task>()
     private val doneTasks = ArrayList<Task>()
-    private val todoTasksAdapter = TodoTasksAdapter(todoTasks)
+    private var todoTasksAdapter = TodoTasksAdapter(todoTasks)
+    private lateinit var todoDB :TodoDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setActionBarProperties()
         rv_todo_list.adapter = todoTasksAdapter
-        todoTasks.add(Task("fazer isso", "joao"))
-        todoTasks.add(Task("depois isso", "pedro"))
-        todoTasks.add(Task("depois refaça", "ricardo"))
-        todoTasks.add(Task("depois jogue fora", "joao"))
+        todoTasks.add(Task(info = "fazer isso", responsible = "joao"))
+        todoTasks.add(Task(info = "depois isso", responsible = "pedro"))
+        todoTasks.add(Task(info = "depois refaça", responsible = "ricardo"))
+        todoTasks.add(Task(info = "depois jogue fora", responsible ="joao"))
+
+        todoDB = TodoDatabaseHelper(this)
+        readFromDatabase()
+    }
+
+    private fun readFromDatabase() {
+        todoTasks = todoDB.read()
+        for(t in todoTasks){
+            Log.i("testing", t.info)
+        }
         todoTasksAdapter.notifyDataSetChanged()
     }
 

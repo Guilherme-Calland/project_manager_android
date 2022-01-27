@@ -33,18 +33,20 @@ class AddTaskActivity : AppCompatActivity() {
 
     private fun addTask(){
         val todoDB = TodoDatabaseHelper(this)
-        if(!titleBlank()){
-            val newTask = Task(inputTask(), "joao")
+        val info = et_task.text.toString()
+        val responsible = "ricardo"
+        val newTask = Task(info = info, responsible = responsible)
+        if(!blackTask()){
             val id = todoDB.create(newTask)
             if(id > 0){
                 Log.i("projectmanagerapp", "success on adding to database")
             }else{
                 Log.i("projectmanagerapp", "fail on adding to database")
             }
+            backToMainActivity()
         }else{
             Toast.makeText(this,"Please fill in all the information.", Toast.LENGTH_LONG).show()
         }
-        backToMainActivity()
     }
 
     private fun backToMainActivity() {
@@ -52,5 +54,5 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     private fun inputTask() = et_task.text.toString()
-    private fun titleBlank() = et_task.text.isEmpty()
+    private fun blackTask() = et_task.text.isEmpty()
 }

@@ -6,12 +6,13 @@
     android:orientation="horizontal"
     android:background="@color/projectTheme"
     android:paddingHorizontal="16sp"
+    android:paddingBottom="16sp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="16sp"
+        android:layout_height="match_parent"
+        android:paddingTop="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -40,8 +41,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="16sp"
+        android:layout_height="match_parent"
+        android:paddingTop="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -69,8 +70,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="16sp"
+        android:layout_height="match_parent"
+        android:paddingTop="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"

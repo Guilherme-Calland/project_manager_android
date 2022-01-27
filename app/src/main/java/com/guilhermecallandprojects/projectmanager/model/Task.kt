@@ -1,6 +1,3 @@
 package com.guilhermecallandprojects.projectmanager.model
 
-class Task(info: String, responsible: String) {
-    var info : String = info
-    var responsible : String = responsible
-}
+class Task(id: Int? = null, val info: String, val responsible: String)
