@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:background="@color/projectTheme"
     android:paddingHorizontal="16sp"
-    android:paddingBottom="16sp"
+    android:paddingBottom="4sp"
     >
 
     <LinearLayout

@@ -35,12 +35,18 @@ class MainActivity : AppCompatActivity() {
         readFromDatabase()
     }
 
-    private fun readFromDatabase() {
+    override fun onResume() {
+        readFromDatabase()
+        super.onResume()
+    }
+
+    private fun readFromDatabase(query: String = "%") {
         todoTasks.clear()
-        val todoTasksTemp = todoDB.read()
+        val todoTasksTemp = todoDB.read(query)
         for(t in todoTasksTemp){
             todoTasks.add(t)
         }
+        todoTasksAdapter.notifyDataSetChanged()
     }
 
     private fun setActionBarProperties() {
@@ -59,12 +65,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setQueryListeners(sv: SearchView) {
         sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(applicationContext, query, Toast.LENGTH_LONG).show()
+            override fun onQueryTextSubmit(query: String): Boolean {
+                readFromDatabase(query)
                 return false
             }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
+            override fun onQueryTextChange(query: String): Boolean {
+//                readFromDatabase(query)
                 return false
             }
         })
