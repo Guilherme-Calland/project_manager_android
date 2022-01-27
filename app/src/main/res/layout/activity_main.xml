@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
@@ -30,10 +30,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_todo_list"
+        android:paddingBottom="16sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:clipToPadding="false"
         />
 
     </LinearLayout>
@@ -41,7 +43,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
@@ -64,13 +66,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:paddingBottom="16sp"
+            android:clipToPadding="false"
             />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="16sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
@@ -92,6 +96,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:paddingBottom="16sp"
+            android:clipToPadding="false"
             />
 
     </LinearLayout>

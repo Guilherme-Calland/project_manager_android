@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         for(t in todoTasks){
             Log.i("testing", t.info)
         }
-        todoTasksAdapter.notifyDataSetChanged()
+        todoTasksAdapter = TodoTasksAdapter(todoTasks)
+        rv_todo_list.adapter = todoTasksAdapter
     }
 
     private fun setActionBarProperties() {
