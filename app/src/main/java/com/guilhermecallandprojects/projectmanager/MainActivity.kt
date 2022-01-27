@@ -49,12 +49,18 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) : Boolean {
         when(item.itemId){
             R.id.i_add-> goToAddTask()
+            R.id.i_members-> goToMembers()
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun goToAddTask() {
-        var intent = Intent(this, AddTaskActivity::class.java)
+        val intent = Intent(this, AddTaskActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToMembers(){
+        val intent = Intent(this, MembersActivity::class.java)
         startActivity(intent)
     }
 

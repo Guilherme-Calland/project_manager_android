@@ -12,6 +12,12 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name= "red">#932B2B</color>
+    <color name= "green">#276320</color>
+    <color name= "blue">#224D7A</color>
+    <color name= "purple">#613173</color>
+    <color name= "orange">#8A551C</color>
+
     <!--possible project themes-->
     <color name="projectTheme">#483564</color>
 </resources>

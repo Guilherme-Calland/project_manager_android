@@ -11,7 +11,7 @@
 9-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml
 10
 11    <application
-11-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:5:5-28:19
+11-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:5:5-30:19
 12        android:allowBackup="true"
 12-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -30,53 +30,61 @@
 20-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:11:9-52
 21        <activity
 21-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:12:9-16:15
-22            android:name="com.guilhermecallandprojects.projectmanager.AddTaskActivity"
+22            android:name="com.guilhermecallandprojects.projectmanager.MembersActivity"
 22-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:13:13-44
 23            android:exported="true"
 23-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:14:13-36
 24            android:screenOrientation="landscape" />
 24-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:15:13-50
 25        <activity
-25-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:18:9-27:20
-26            android:name="com.guilhermecallandprojects.projectmanager.MainActivity"
-26-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:19:13-41
+25-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:17:9-20:53
+26            android:name="com.guilhermecallandprojects.projectmanager.AddTaskActivity"
+26-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:18:13-44
 27            android:exported="true"
-27-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:20:13-36
-28            android:screenOrientation="userLandscape" >
-28-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:21:13-54
-29            <intent-filter>
-29-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:22:13-26:29
-30                <action android:name="android.intent.action.MAIN" />
-30-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:23:17-69
-30-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:23:25-66
-31
-32                <category android:name="android.intent.category.LAUNCHER" />
-32-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:25:17-77
-32-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:25:27-74
-33            </intent-filter>
-34        </activity>
+27-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:19:13-36
+28            android:screenOrientation="landscape" />
+28-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:20:13-50
+29        <activity
+29-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:21:9-29:20
+30            android:name="com.guilhermecallandprojects.projectmanager.MainActivity"
+30-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:22:13-41
+31            android:exported="true"
+31-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:23:13-36
+32            android:screenOrientation="userLandscape" >
+32-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:24:13-54
+33            <intent-filter>
+33-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:25:13-28:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:26:17-69
+34-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:26:25-66
 35
-36        <provider
-36-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
-37            android:name="androidx.startup.InitializationProvider"
-37-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
-38            android:authorities="com.guilhermecallandprojects.projectmanager.androidx-startup"
-38-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
-39            android:exported="false" >
-39-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
-40            <meta-data
-40-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
-41                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-41-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
-42                android:value="androidx.startup" />
-42-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
-43            <meta-data
-43-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/gui/.gradle/caches/transforms-3/6feb955ebb6e344d4d3781bb5b197d1b/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
-44                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-44-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/gui/.gradle/caches/transforms-3/6feb955ebb6e344d4d3781bb5b197d1b/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
-45                android:value="androidx.startup" />
-45-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/gui/.gradle/caches/transforms-3/6feb955ebb6e344d4d3781bb5b197d1b/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
-46        </provider>
-47    </application>
-48
-49</manifest>
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:27:17-77
+36-->/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/AndroidManifest.xml:27:27-74
+37            </intent-filter>
+38        </activity>
+39
+40        <provider
+40-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+41            android:name="androidx.startup.InitializationProvider"
+41-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+42            android:authorities="com.guilhermecallandprojects.projectmanager.androidx-startup"
+42-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+43            android:exported="false" >
+43-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+44            <meta-data
+44-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+45                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+45-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+46                android:value="androidx.startup" />
+46-->[androidx.emoji2:emoji2:1.0.0] /home/gui/.gradle/caches/transforms-3/7ba4e753ba4b5f4a804fd42cfed9343b/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+47            <meta-data
+47-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/gui/.gradle/caches/transforms-3/6feb955ebb6e344d4d3781bb5b197d1b/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+48                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+48-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/gui/.gradle/caches/transforms-3/6feb955ebb6e344d4d3781bb5b197d1b/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+49                android:value="androidx.startup" />
+49-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/gui/.gradle/caches/transforms-3/6feb955ebb6e344d4d3781bb5b197d1b/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+50        </provider>
+51    </application>
+52
+53</manifest>

@@ -1212,6 +1212,7 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color blue
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1274,6 +1275,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color m3_appbar_overlay_color
@@ -1744,6 +1746,7 @@ color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color orange
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -1753,10 +1756,12 @@ color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
 color projectTheme
+color purple
 color purple_200
 color purple_500
 color purple_700
 color radiobutton_themeable_attribute_color
+color red
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -2444,6 +2449,7 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable baseline_note_add_white_24dp
 drawable baseline_search_white_24dp
+drawable blue_background
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2458,6 +2464,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable green_background
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -2513,6 +2520,10 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable orange_background
+drawable outline_people_white_24dp
+drawable purple_background
+drawable red_background
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -2728,6 +2739,7 @@ id homeAsUp
 id honorRequest
 id horizontal_only
 id i_add
+id i_members
 id i_search
 id icon
 id icon_group
@@ -3084,6 +3096,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_task
 layout activity_main
+layout activity_members
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3206,6 +3219,8 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string add_button_text
 string add_hint
+string add_new_member_text
+string add_new_member_title
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -3221,6 +3236,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
+string hint_name
 string icon_content_description
 string item_view_role_description
 string m3_ref_typeface_brand_display_regular
@@ -3269,6 +3285,9 @@ string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
 string member_hint
+string members_title
+string menu_add_title
+string menu_search_title
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description

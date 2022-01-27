@@ -10,18 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectManager">
         <activity
-            android:name=".AddTaskActivity"
+            android:name=".MembersActivity"
             android:exported="true"
             android:screenOrientation="landscape"
             />
-
+        <activity
+            android:name=".AddTaskActivity"
+            android:exported="true"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="userLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

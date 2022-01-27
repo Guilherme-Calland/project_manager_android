@@ -5,4 +5,10 @@
     <string name="member_hint">Responsible member</string>
     <string name="add_button_text">Add</string>
     <string name="responsible_members_top">Responsible:</string>
+    <string name="menu_add_title">Add</string>
+    <string name="menu_search_title">Search</string>
+    <string name="members_title">Members:</string>
+    <string name="add_new_member_title">Add new member:</string>
+    <string name="hint_name">Name</string>
+    <string name="add_new_member_text">Add</string>
 </resources>

@@ -5,12 +5,19 @@
     <item
         android:id="@+id/i_add"
         android:icon="@drawable/baseline_note_add_white_24dp"
-        android:title="i_add"
+        android:title="@string/menu_add_title"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/i_members"
+        android:icon="@drawable/outline_people_white_24dp"
+        android:title="@string/menu_search_title"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/i_search"
         android:icon="@drawable/baseline_search_white_24dp"
-        android:title="Search"
+        android:title="@string/menu_search_title"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
 </menu>
