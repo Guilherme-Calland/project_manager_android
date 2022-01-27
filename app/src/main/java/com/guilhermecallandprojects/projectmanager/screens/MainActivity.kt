@@ -65,13 +65,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setQueryListeners(sv: SearchView) {
         sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String): Boolean {
-                readFromDatabase(query)
                 return false
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-//                readFromDatabase(query)
+                readFromDatabase(query)
                 return false
             }
         })

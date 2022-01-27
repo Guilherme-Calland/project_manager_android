@@ -2525,6 +2525,10 @@ int drawable notification_template_icon_low_bg 0x7f07009e
 int drawable notification_tile_bg 0x7f07009f
 int drawable notify_panel_notification_icon_bg 0x7f0700a0
 int drawable orange_background 0x7f0700a1
+int drawable outline_backward_white 0x7f0700a9
+int drawable outline_delete_white_24dp 0x7f0700ab
+int drawable outline_forward_white_24dp 0x7f0700aa
+int drawable outline_mode_edit_white_24dp 0x7f0700ac
 int drawable outline_people_white_24dp 0x7f0700a2
 int drawable purple_background 0x7f0700a3
 int drawable red_background 0x7f0700a4

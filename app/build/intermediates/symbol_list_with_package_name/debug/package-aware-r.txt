@@ -2526,6 +2526,10 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable orange_background
+drawable outline_backward_white
+drawable outline_delete_white_24dp
+drawable outline_forward_white_24dp
+drawable outline_mode_edit_white_24dp
 drawable outline_people_white_24dp
 drawable purple_background
 drawable red_background
