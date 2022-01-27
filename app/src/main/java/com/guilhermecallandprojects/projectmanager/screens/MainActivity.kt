@@ -42,22 +42,26 @@ class MainActivity : AppCompatActivity() {
 
     inner class OnPressedConcreteClass : TodoTasksAdapter.OnPressedInterface{
         override fun onDelete(position: Int, model: Task){
-            if (model.id != null){
-                val result: Int = todoDB.delete(model.id)
-                if (result > 0){
-                    Log.i("projectmanagerapp", "element was deleted successfully! (MainActivity)")
-                }else{
-                    Log.e("projectmanagerapp","error on deleting the element. (MainActivity)")
-                }
-            }else{
-                Log.e("projectmanagerapp", "was passed a null id for deletion. (MainActivity)")
-            }
+            deleteTask(model)
             readFromDatabase()
         }
 
         override fun onEdit(position: Int, model: Task) {
             goToAddTask(model)
             readFromDatabase()
+        }
+    }
+
+    private fun deleteTask(model: Task) {
+        if (model.id != null) {
+            val result: Int = todoDB.delete(model.id)
+            if (result > 0) {
+                Log.i("projectmanagerapp", "element was deleted successfully! (MainActivity)")
+            } else {
+                Log.e("projectmanagerapp", "error on deleting the element. (MainActivity)")
+            }
+        } else {
+            Log.e("projectmanagerapp", "was passed a null id for deletion. (MainActivity)")
         }
     }
 

@@ -56,7 +56,7 @@ class AddTaskActivity : AppCompatActivity() {
         if(!blanckTask()){
             var result: Long = 0
             if(addOrEdit=="Add"){
-                val newTask = Task(info = info, responsible = "pedro")
+                val newTask = Task(info = info, responsible = "")
                 result = todoDB.create(newTask)
             }else if(addOrEdit=="Edit"){
                 task.info = info
