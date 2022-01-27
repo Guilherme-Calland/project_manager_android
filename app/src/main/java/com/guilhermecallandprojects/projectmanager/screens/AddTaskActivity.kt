@@ -34,8 +34,7 @@ class AddTaskActivity : AppCompatActivity() {
     private fun addTask(){
         val todoDB = TodoDatabaseHelper(this)
         val info = et_task.text.toString()
-        val responsible = "ricardo"
-        val newTask = Task(info = info, responsible = responsible)
+        val newTask = Task(info = info, responsible = "ricardo")
         if(!blackTask()){
             val id = todoDB.create(newTask)
             if(id > 0){

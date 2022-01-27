@@ -9,6 +9,7 @@ import com.guilhermecallandprojects.projectmanager.model.Task
 
 class TodoTasksAdapter(var todoTasks : ArrayList<Task>)
     : RecyclerView.Adapter<TaskHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.task, parent, false)
         return TaskHolder(itemView)

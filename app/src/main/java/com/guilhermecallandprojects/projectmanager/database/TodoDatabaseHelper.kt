@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.database.sqlite.SQLiteQueryBuilder
 import android.util.Log
 import com.guilhermecallandprojects.projectmanager.model.Task
 
@@ -35,12 +36,11 @@ class TodoDatabaseHelper(context: Context) :
         return result;
     }
 
-    fun read() : ArrayList<Task>{
+    fun read(queryArg: String = "%") : ArrayList<Task>{
         val taskList = ArrayList<Task>()
-        val query = "SELECT * FROM $table_todo"
+        val query = "SELECT * FROM $table_todo WHERE $column_info LIKE '%$queryArg%' OR $column_responsible LIKE '%$queryArg%'"
         var db = this.readableDatabase
         val cursor : Cursor = db.rawQuery(query, null)
-
         try{
             if (cursor.moveToFirst()) {
                 do {

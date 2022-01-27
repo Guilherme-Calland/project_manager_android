@@ -18,33 +18,29 @@ import com.guilhermecallandprojects.projectmanager.model.Task
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var todoTasks = ArrayList<Task>()
-    private val doingTasks = ArrayList<Task>()
-    private val doneTasks = ArrayList<Task>()
-    private var todoTasksAdapter = TodoTasksAdapter(todoTasks)
+    private lateinit var todoTasks: ArrayList<Task>
+    private lateinit var doingTasks: ArrayList<Task>
+    private lateinit var doneTasks: ArrayList<Task>
+    private lateinit var todoTasksAdapter : TodoTasksAdapter
     private lateinit var todoDB :TodoDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setActionBarProperties()
+        todoTasks = ArrayList()
+        todoTasksAdapter = TodoTasksAdapter(todoTasks)
         rv_todo_list.adapter = todoTasksAdapter
-        todoTasks.add(Task(info = "fazer isso", responsible = "joao"))
-        todoTasks.add(Task(info = "depois isso", responsible = "pedro"))
-        todoTasks.add(Task(info = "depois refaça", responsible = "ricardo"))
-        todoTasks.add(Task(info = "depois jogue fora", responsible ="joao"))
-
         todoDB = TodoDatabaseHelper(this)
         readFromDatabase()
     }
 
     private fun readFromDatabase() {
-        todoTasks = todoDB.read()
-        for(t in todoTasks){
-            Log.i("testing", t.info)
+        todoTasks.clear()
+        val todoTasksTemp = todoDB.read()
+        for(t in todoTasksTemp){
+            todoTasks.add(t)
         }
-        todoTasksAdapter = TodoTasksAdapter(todoTasks)
-        rv_todo_list.adapter = todoTasksAdapter
     }
 
     private fun setActionBarProperties() {
