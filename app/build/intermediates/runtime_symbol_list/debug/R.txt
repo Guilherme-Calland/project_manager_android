@@ -2766,6 +2766,9 @@ int id item2 0x7f0800e2
 int id item3 0x7f0800e3
 int id item4 0x7f0800e4
 int id item_touch_helper_previous_elevation 0x7f0800e5
+int id iv_delete 0x7f0801e7
+int id iv_edit 0x7f0801e8
+int id iv_throwNextCol 0x7f0801e9
 int id jumpToEnd 0x7f0800e6
 int id jumpToStart 0x7f0800e7
 int id labeled 0x7f0800e8

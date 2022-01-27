@@ -33,6 +33,7 @@
         android:gravity="end"
         >
         <ImageView
+            android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/outline_delete_white_24dp"
@@ -40,6 +41,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/outline_mode_edit_white_24dp"
@@ -47,6 +49,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_throwNextCol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/outline_forward_white_24dp"

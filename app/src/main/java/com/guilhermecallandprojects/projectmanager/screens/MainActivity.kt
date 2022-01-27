@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
 import android.view.inputmethod.EditorInfo
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
@@ -31,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         todoTasks = ArrayList()
         todoTasksAdapter = TodoTasksAdapter(todoTasks)
         rv_todo_list.adapter = todoTasksAdapter
+        todoTasksAdapter.setOnPressedListener(OnPressedConcreteClass())
         todoDB = TodoDatabaseHelper(this)
         readFromDatabase()
     }
@@ -38,6 +38,26 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         readFromDatabase()
         super.onResume()
+    }
+
+    inner class OnPressedConcreteClass : TodoTasksAdapter.OnPressedInterface{
+        override fun onDelete(position: Int, model: Task){
+            if (model.id != null){
+                val result: Int = todoDB.delete(model.id)
+                if (result > 0){
+                    Log.i("projectmanagerapp", "element was deleted successfully!")
+                }else{
+                    Log.e("projectmanagerapp","error on deleting the element.")
+                }
+            }else{
+                Log.e("projectmanagerapp", "was passed a null id for deletion.")
+            }
+            readFromDatabase()
+        }
+
+        override fun onEdit(position: Int, model: Task) {
+            TODO("Not yet implemented")
+        }
     }
 
     private fun readFromDatabase(query: String = "%") {

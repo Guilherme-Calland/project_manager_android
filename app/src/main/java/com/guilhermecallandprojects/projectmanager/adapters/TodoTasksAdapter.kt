@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.model.Task
 
-class TodoTasksAdapter(var todoTasks : ArrayList<Task>)
+class TodoTasksAdapter(private var todoTasks: ArrayList<Task>)
     : RecyclerView.Adapter<TaskHolder>() {
+
+
+    private var onPressedInterface: OnPressedInterface? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.task, parent, false)
@@ -19,9 +22,28 @@ class TodoTasksAdapter(var todoTasks : ArrayList<Task>)
         val task = todoTasks[position]
         holder.info.text = task.info
         holder.responsible.text = task.responsible
+
+        holder.deleteButton.setOnClickListener {
+            if(onPressedInterface != null){
+                onPressedInterface?.onDelete(position, task)
+            }else{
+                Log.e("projectmanagerapp", "error on delete button.")
+            }
+        }
+
+
     }
 
     override fun getItemCount(): Int {
         return todoTasks.size
+    }
+
+    interface OnPressedInterface{
+        fun onDelete(position: Int, model: Task)
+        fun onEdit(position: Int, model: Task)
+    }
+
+    fun setOnPressedListener(onPressedInterface: OnPressedInterface){
+        this.onPressedInterface = onPressedInterface
     }
 }
