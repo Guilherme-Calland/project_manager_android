@@ -45,7 +45,7 @@
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingVertical="16sp"
+            android:paddingVertical="8sp"
             android:paddingHorizontal="16sp"
             >
 

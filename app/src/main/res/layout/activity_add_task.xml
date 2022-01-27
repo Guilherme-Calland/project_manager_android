@@ -18,70 +18,73 @@
         android:orientation="vertical"
         >
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/new_task_message"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:layout_marginBottom="8sp"
-            />
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginBottom="8sp"
             >
-
-            <EditText
-                android:lines="5"
-                android:gravity="start"
-                android:id="@+id/et_task_name"
-                android:background="@drawable/item_background"
-                android:layout_width="180sp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:hint="@string/add_hint"
-                android:textColorHint="@color/custom_gray_light"
-                android:layout_marginBottom="4sp"
-                android:layout_marginRight="8sp"
-                android:paddingVertical="8sp"
-                android:paddingHorizontal="8sp"
-                />
-
-
             <LinearLayout
-                android:layout_width="120sp"
-                android:layout_height="125sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/item_background"
+                android:layout_marginRight="16sp"
                 >
+
                 <TextView
-                    android:id="@+id/et_responsible_member"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/new_task_message"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/custom_gray_light"
-                    android:paddingVertical="4sp"
-                    android:layout_marginBottom="2sp"
-                    android:text="@string/responsible_members_top"
+                    android:textSize="24sp"
+                    android:layout_marginBottom="8sp"
                     />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height= "match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                <EditText
+                    android:lines="5"
+                    android:gravity="start"
+                    android:id="@+id/et_task_name"
+                    android:background="@drawable/item_background"
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:hint="@string/add_hint"
+                    android:textColorHint="@color/custom_gray_light"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginRight="8sp"
+                    android:paddingVertical="8sp"
+                    android:paddingHorizontal="8sp"
                     />
 
             </LinearLayout>
 
 
 
+            <LinearLayout
+                android:layout_width="150sp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/et_responsible_member"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/custom_gray_light"
+                    android:layout_marginBottom="2sp"
+                    android:text="@string/responsible_members_top"
+                    android:textSize="24sp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height= "130sp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
+
+            </LinearLayout>
+
         </LinearLayout>
-
-
 
         <TextView
             android:layout_width="match_parent"
@@ -91,10 +94,8 @@
             android:text="@string/add_button_text"
             android:textAlignment="center"
             android:textColor="@color/white"
+            android:layout_marginTop="8sp"
             />
-
-
-
 
     </LinearLayout>
 

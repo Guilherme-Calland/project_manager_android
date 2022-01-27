@@ -1,4 +1,4 @@
-#Thu Jan 27 01:12:31 BRT 2022
+#Thu Jan 27 01:31:27 BRT 2022
 base.2=/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
 path.2=1/classes.dex
 base.1=/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
