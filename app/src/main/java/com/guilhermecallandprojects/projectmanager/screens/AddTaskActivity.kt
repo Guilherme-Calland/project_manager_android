@@ -13,16 +13,34 @@ import com.guilhermecallandprojects.projectmanager.model.Task
 import kotlinx.android.synthetic.main.activity_add_task.*
 
 class AddTaskActivity : AppCompatActivity() {
+
+    private var id: Int? = null
+    private var info: String? = null
+    private var responsible: String? = null
+    private var addOrEdit: String = "Add"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
         setActionBarProperties()
         addButtonListen()
+
+        val bundle: Bundle? = intent.extras
+        if(bundle != null){
+            addOrEdit = "Edit"
+            btn_add.setText("Done")
+            id = bundle.getInt("id")
+            info = bundle.getString("info")
+            responsible = bundle.getString("responsible")
+            et_task.setText(info)
+        }
+        tv_title.text = "$addOrEdit task"
     }
 
     private fun addButtonListen() {
         btn_add.setOnClickListener {
-            addTask()
+            val task = Task(id= id)
+            addTask(task)
         }
     }
 
@@ -31,17 +49,27 @@ class AddTaskActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun addTask(){
+    private fun addTask(task: Task){
         val todoDB = TodoDatabaseHelper(this)
         val info = et_task.text.toString()
-        val newTask = Task(info = info, responsible = "ricardo")
-        if(!blackTask()){
-            val id = todoDB.create(newTask)
-            if(id > 0){
-                Log.i("projectmanagerapp", "success on adding to database")
-            }else{
-                Log.i("projectmanagerapp", "fail on adding to database")
+
+        if(!blanckTask()){
+            var result: Long = 0
+            if(addOrEdit=="Add"){
+                val newTask = Task(info = info, responsible = "pedro")
+                result = todoDB.create(newTask)
+            }else if(addOrEdit=="Edit"){
+                task.info = info
+                task.responsible = "ricardo"
+                result = todoDB.update(task)
             }
+
+            if(result > 0){
+                Log.i("projectmanagerapp", "$addOrEdit to database successful. (AddTaskActivity)")
+            }else{
+                Log.e("projectmanagerapp", "fail on database $addOrEdit. (AddTaskActivity)")
+            }
+
             backToMainActivity()
         }else{
             Toast.makeText(this,"Please fill in all the information.", Toast.LENGTH_LONG).show()
@@ -52,6 +80,5 @@ class AddTaskActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun inputTask() = et_task.text.toString()
-    private fun blackTask() = et_task.text.isEmpty()
+    private fun blanckTask() = et_task.text.isEmpty()
 }

@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.model.Task
 
-class TodoTasksAdapter(private var todoTasks: ArrayList<Task>)
-    : RecyclerView.Adapter<TaskHolder>() {
+class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
+    RecyclerView.Adapter<TaskHolder>() {
 
 
     private var onPressedInterface: OnPressedInterface? = null
@@ -24,26 +24,32 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>)
         holder.responsible.text = task.responsible
 
         holder.deleteButton.setOnClickListener {
-            if(onPressedInterface != null){
+            if (onPressedInterface != null) {
                 onPressedInterface?.onDelete(position, task)
-            }else{
-                Log.e("projectmanagerapp", "error on delete button.")
+            } else {
+                Log.e("projectmanagerapp", "error on delete button. (TodoTasksAdapter)")
             }
         }
 
-
+        holder.editButton.setOnClickListener {
+            if (onPressedInterface != null) {
+                onPressedInterface?.onEdit(position, task)
+            } else {
+                Log.e("projectmanagerapp", "error on edit button. (TodoTasksAdapter)")
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return todoTasks.size
     }
 
-    interface OnPressedInterface{
+    interface OnPressedInterface {
         fun onDelete(position: Int, model: Task)
         fun onEdit(position: Int, model: Task)
     }
 
-    fun setOnPressedListener(onPressedInterface: OnPressedInterface){
+    fun setOnPressedListener(onPressedInterface: OnPressedInterface) {
         this.onPressedInterface = onPressedInterface
     }
 }

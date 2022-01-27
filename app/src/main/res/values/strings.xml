@@ -13,4 +13,7 @@
     <string name="add_new_member_text">Add</string>
     <string name="task_information_for_debug">this is where the task information goes</string>
     <string name="responsible_for_debug">this is where the responsible goes</string>
+    <string name="todo_title">To do:</string>
+    <string name="doing_title">Doing:</string>
+    <string name="done_title">Done:</string>
 </resources>

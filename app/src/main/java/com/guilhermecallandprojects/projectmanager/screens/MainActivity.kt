@@ -45,18 +45,19 @@ class MainActivity : AppCompatActivity() {
             if (model.id != null){
                 val result: Int = todoDB.delete(model.id)
                 if (result > 0){
-                    Log.i("projectmanagerapp", "element was deleted successfully!")
+                    Log.i("projectmanagerapp", "element was deleted successfully! (MainActivity)")
                 }else{
-                    Log.e("projectmanagerapp","error on deleting the element.")
+                    Log.e("projectmanagerapp","error on deleting the element. (MainActivity)")
                 }
             }else{
-                Log.e("projectmanagerapp", "was passed a null id for deletion.")
+                Log.e("projectmanagerapp", "was passed a null id for deletion. (MainActivity)")
             }
             readFromDatabase()
         }
 
         override fun onEdit(position: Int, model: Task) {
-            TODO("Not yet implemented")
+            goToAddTask(model)
+            readFromDatabase()
         }
     }
 
@@ -109,8 +110,15 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun goToAddTask() {
+    private fun goToAddTask(task: Task? = null) {
         val intent = Intent(this, AddTaskActivity::class.java)
+
+        if(task!=null){
+            intent.putExtra("id", task.id)
+            intent.putExtra("info", task.info)
+            intent.putExtra("responsible", task.responsible)
+        }
+
         startActivity(intent)
     }
 

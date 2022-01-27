@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16sp"
+        android:paddingTop="12sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To do:"
+            android:text="@string/todo_title"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_marginLeft="9sp"
@@ -30,7 +30,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_todo_list"
-        android:paddingBottom="16sp"
+        android:paddingBottom="12sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -44,7 +44,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16sp"
+        android:paddingTop="12sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -54,19 +54,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Doing:"
+            android:text="@string/doing_title"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:layout_marginLeft="4sp"
+            android:layout_marginStart="4sp"
 
             />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_doing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:paddingBottom="16sp"
+            android:paddingBottom="12sp"
             android:clipToPadding="false"
             />
 
@@ -75,7 +76,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16sp"
+        android:paddingTop="12sp"
         android:background="@drawable/item_background_dark"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -85,18 +86,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done:"
+            android:text="@string/done_title"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:layout_marginLeft="4sp"
+            android:layout_marginStart="4sp"
             />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_done"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:paddingBottom="16sp"
+            android:paddingBottom="12sp"
             android:clipToPadding="false"
             />
 

@@ -55,17 +55,25 @@ class TodoDatabaseHelper(context: Context) :
                         val newTask = Task(id = id, info, responsible)
                         taskList.add(newTask)
                     } else {
-                        Log.e("projectmanagerapp", "error on reading column indexes.")
+                        Log.e("projectmanagerapp", "error on reading column indexes. (TodoDatabaseHelper)")
                     }
                 } while (cursor.moveToNext())
             }
         } catch(e: Exception) {
-            Log.e("projectmanagerapp", "reading database error")
+            Log.e("projectmanagerapp", "reading database error. (TodoDatabaseHelper)")
         }
 
-        Log.i("projectmanagerapp","retieved data from database successfully")
+        Log.i("projectmanagerapp","retrieved data from database successfully. (TodoDatabaseHelper)")
         cursor.close()
         return taskList
+    }
+
+    fun update(task: Task): Long{
+        val values = ContentValues()
+        values.put(column_info, task.info)
+        values.put(column_responsible, task.responsible)
+        val result = writableDatabase.update(table_todo, values,"id=${task.id}", null).toLong()
+        return result
     }
 
     fun delete(id: Int) : Int{

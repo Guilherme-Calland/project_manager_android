@@ -2888,6 +2888,8 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rv_doing
+id rv_done
 id rv_responsible_list
 id rv_todo_list
 id save_non_transition_alpha
@@ -3003,6 +3005,7 @@ id transition_transform
 id triangle
 id tv_info
 id tv_responsible
+id tv_title
 id unchecked
 id uniform
 id unlabeled
@@ -3248,6 +3251,8 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string doing_title
+string done_title
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -3352,6 +3357,7 @@ string responsible_members_top
 string search_menu_title
 string status_bar_notification_info_overflow
 string task_information_for_debug
+string todo_title
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow
