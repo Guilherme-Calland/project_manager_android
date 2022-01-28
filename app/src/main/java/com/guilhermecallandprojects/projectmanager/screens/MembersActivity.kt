@@ -6,26 +6,14 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.View.*
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.view.isGone
-import androidx.core.view.setPadding
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.MemberAdapter
 import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Member
 import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_members.*
-import kotlinx.android.synthetic.main.member.*
-import android.widget.LinearLayout
-
-
-
 
 class MembersActivity : AppCompatActivity() {
     private lateinit var membersList: ArrayList<Member>
@@ -43,7 +31,7 @@ class MembersActivity : AppCompatActivity() {
     }
 
     private fun setNameEditTextListeners() {
-        disableFullscreen(et_member_name)
+        Util.disableFullscreen(editText = et_member_name)
 
         et_member_name.setOnClickListener{
             ll_membersList.visibility = GONE
@@ -52,17 +40,6 @@ class MembersActivity : AppCompatActivity() {
             btn_back.visibility = VISIBLE
             ll_members_activity.gravity = Gravity.CENTER_HORIZONTAL
             tv_new_member_title.visibility = GONE
-        }
-
-        et_member_name.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                ll_membersList.visibility = GONE
-                btn_add.visibility = GONE
-                btn_add_h.visibility = VISIBLE
-                btn_back.visibility = VISIBLE
-                ll_members_activity.gravity = Gravity.CENTER_HORIZONTAL
-                tv_new_member_title.visibility = GONE
-            }
         }
 
         et_member_name.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
@@ -92,10 +69,6 @@ class MembersActivity : AppCompatActivity() {
             membersList.add(m)
         }
         memberAdapter.notifyDataSetChanged()
-    }
-
-    private fun disableFullscreen(view: EditText) {
-        view.setImeOptions(view.getImeOptions() or EditorInfo.IME_FLAG_NO_EXTRACT_UI or EditorInfo.IME_FLAG_NO_FULLSCREEN)
     }
 
     fun onColorSelect(view: View){
@@ -161,7 +134,7 @@ class MembersActivity : AppCompatActivity() {
         hideKeyboard()
     }
 
-    fun hideKeyboard() {
+    private fun hideKeyboard(){
         val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
     }

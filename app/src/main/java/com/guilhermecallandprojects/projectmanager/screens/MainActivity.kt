@@ -6,16 +6,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.SearchView
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
 import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_members.*
 import kotlinx.android.synthetic.main.task.*
 
 class MainActivity : AppCompatActivity() {
@@ -85,14 +89,13 @@ class MainActivity : AppCompatActivity() {
         val sv = menu.findItem(R.id.i_search).actionView as SearchView
         val sm = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         sv.setSearchableInfo(sm.getSearchableInfo(componentName))
-        disableFullscreen(sv)
+        Util.disableFullscreen(searchView = sv)
         setQueryListeners(sv)
         return super.onCreateOptionsMenu(menu)
     }
 
     private fun setQueryListeners(sv: SearchView) {
         sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false
             }
@@ -102,10 +105,6 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
-    }
-
-    private fun disableFullscreen(sv: SearchView) {
-        sv.setImeOptions(sv.getImeOptions() or EditorInfo.IME_FLAG_NO_EXTRACT_UI or EditorInfo.IME_FLAG_NO_FULLSCREEN)
     }
 
     override fun onOptionsItemSelected(item: MenuItem) : Boolean {
