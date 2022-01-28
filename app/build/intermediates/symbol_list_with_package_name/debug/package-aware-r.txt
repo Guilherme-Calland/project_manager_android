@@ -2805,11 +2805,13 @@ id linear
 id listMode
 id list_item
 id ll_add_row
+id ll_add_task_layout
 id ll_color_items
 id ll_icons
 id ll_member
 id ll_membersList
 id ll_members_activity
+id ll_responsible_member
 id ll_task
 id masked
 id match_constraint

@@ -19,18 +19,17 @@
         android:testOnly="true"
         android:theme="@style/Theme.ProjectManager" >
         <activity
-            android:name="com.guilhermecallandprojects.projectmanager.utils.Utils"
-            android:exported="true" />
-        <activity
             android:name="com.guilhermecallandprojects.projectmanager.screens.MembersActivity"
             android:exported="true"
             android:parentActivityName="com.guilhermecallandprojects.projectmanager.screens.MainActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="userLandscape" >
+        </activity>
         <activity
             android:name="com.guilhermecallandprojects.projectmanager.screens.AddTaskActivity"
             android:exported="true"
             android:parentActivityName="com.guilhermecallandprojects.projectmanager.screens.MainActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="userLandscape" >
+        </activity>
         <activity
             android:name="com.guilhermecallandprojects.projectmanager.screens.MainActivity"
             android:exported="true"

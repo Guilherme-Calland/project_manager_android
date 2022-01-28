@@ -2804,11 +2804,13 @@ int id linear 0x7f0800ef
 int id listMode 0x7f0800f0
 int id list_item 0x7f0800f1
 int id ll_add_row 0x7f080215
+int id ll_add_task_layout 0x7f08021a
 int id ll_color_items 0x7f080203
 int id ll_icons 0x7f080200
 int id ll_member 0x7f080202
 int id ll_membersList 0x7f080204
 int id ll_members_activity 0x7f080205
+int id ll_responsible_member 0x7f08021b
 int id ll_task 0x7f080201
 int id masked 0x7f0800f2
 int id match_constraint 0x7f0800f3
