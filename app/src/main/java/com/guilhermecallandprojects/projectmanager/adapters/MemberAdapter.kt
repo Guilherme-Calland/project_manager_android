@@ -63,7 +63,7 @@ class MemberAdapter(private var context: Context, private var members: ArrayList
         }
     }
 
-    private fun resetIconViews(holder: MemberHolder) {
+    fun resetIconViews(holder: MemberHolder? = null) {
         for (h in holderList) {
             if (h != holder) {
                 h.iconRow.visibility = GONE

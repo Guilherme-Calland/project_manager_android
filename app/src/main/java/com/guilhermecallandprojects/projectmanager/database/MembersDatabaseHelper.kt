@@ -67,6 +67,14 @@ class MembersDatabaseHelper(context: Context)
         return membersList
     }
 
+    fun update(member: Member) : Long{
+        val values = ContentValues()
+        values.put(columnName, member.name)
+        values.put(columnColor, member.color)
+        val result = writableDatabase.update(tableMembers, values, "$columnID=${member.id}", null).toLong()
+        return result
+    }
+
     fun delete(id : Int) : Int{
         val result = writableDatabase.delete(tableMembers, "$columnID=$id", null)
         return result

@@ -52,14 +52,13 @@
             android:paddingHorizontal="4sp"
             android:paddingVertical="8sp"
             android:layout_marginHorizontal="4sp"
-            android:onClick="onBackBtnPressed"
             android:textColor="@color/white"
             android:src="@drawable/outline_arrow_back_black_24dp"
             />
 
         <LinearLayout
             android:background="@drawable/item_background_dark"
-            android:layout_width="wrap_content"
+            android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingVertical="16sp"
@@ -229,24 +228,51 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/btn_add"
+            <LinearLayout
+                android:id="@+id/ll_buttons_v"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
-                android:layout_marginHorizontal="16sp"
-                android:paddingVertical="8sp"
-                android:background="@drawable/button_background"
-                android:onClick="onAddBtnPressed"
-                android:text="@string/add_new_member_text"
-                android:textSize="18sp"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginHorizontal="16sp"
+                    android:paddingVertical="8sp"
+                    android:background="@drawable/button_background"
+                    android:text="@string/add_new_member_text"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/btn_cancel"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginHorizontal="16sp"
+                    android:paddingVertical="8sp"
+                    android:background="@drawable/button_background"
+                    android:text="@string/cancel_edit_member_text"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
 
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_buttons_h"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -255,7 +281,7 @@
 
             <TextView
                 android:id="@+id/btn_add_h"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="120sp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
@@ -263,6 +289,20 @@
                 android:paddingVertical="12sp"
                 android:background="@drawable/button_background_dark"
                 android:text="@string/add_new_member_text"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/btn_cancel_h"
+                android:visibility="visible"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginHorizontal="16sp"
+                android:paddingVertical="12sp"
+                android:background="@drawable/button_background_dark"
+                android:text="@string/cancel_edit_member_text"
                 android:textSize="18sp"
                 android:textAlignment="center"
                 android:textColor="@color/white" />

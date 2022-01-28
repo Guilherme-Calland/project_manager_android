@@ -2642,6 +2642,8 @@ id bounceStart
 id btn_add
 id btn_add_h
 id btn_back
+id btn_cancel
+id btn_cancel_h
 id buttonPanel
 id c_blue
 id c_blue_chosen
@@ -2806,6 +2808,8 @@ id listMode
 id list_item
 id ll_add_row
 id ll_add_task_layout
+id ll_buttons_h
+id ll_buttons_v
 id ll_color_items
 id ll_icons
 id ll_member
@@ -3281,6 +3285,7 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string cancel_edit_member_text
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern

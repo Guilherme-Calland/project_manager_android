@@ -16,4 +16,5 @@
     <string name="todo_title">To do:</string>
     <string name="doing_title">Doing:</string>
     <string name="done_title">Done:</string>
+    <string name="cancel_edit_member_text">Cancel</string>
 </resources>
