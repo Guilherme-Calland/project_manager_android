@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.setPadding
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Member
-import com.guilhermecallandprojects.projectmanager.model.Person
 import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_members.*
 
@@ -26,20 +24,42 @@ class MembersActivity : AppCompatActivity() {
         setActionBarProperties()
         membersList = ArrayList()
         membersDB = MembersDatabaseHelper(this)
-        memberColor = "green"
-        c_green.layoutParams.width = 20
-        c_green.layoutParams.height = 20
+        changeColor("green")
     }
 
     fun onColorSelect(view: View){
-        when(view.id){
-            R.id.c_blue -> memberColor = "blue"
-            R.id.c_green -> memberColor = "green"
-            R.id.c_red -> memberColor = "red"
-            R.id.c_orange -> memberColor = "orange"
-            R.id.c_purple -> memberColor = "purple"
+        resetColors()
+        when(view){
+            c_blue -> { changeColor("blue") }
+            c_green -> { changeColor("green") }
+            c_red -> { changeColor("red") }
+            c_orange -> { changeColor("orange") }
+            c_purple -> { changeColor("purple") }
         }
-        view.setPadding(5)
+    }
+
+    private fun resetColors() {
+        switchViewVisibility(c_green_chosen, c_green_unchosen)
+        switchViewVisibility(c_blue_chosen, c_blue_unchosen)
+        switchViewVisibility(c_purple_chosen, c_purple_unchosen)
+        switchViewVisibility(c_red_chosen, c_red_unchosen)
+        switchViewVisibility(c_orange_chosen, c_orange_unchosen)
+    }
+
+    private fun changeColor(color: String) {
+        memberColor = color
+        when(color){
+            "green" -> { switchViewVisibility(c_green_unchosen, c_green_chosen) }
+            "blue" -> { switchViewVisibility(c_blue_unchosen, c_blue_chosen) }
+            "purple" -> { switchViewVisibility(c_purple_unchosen, c_purple_chosen) }
+            "red" -> { switchViewVisibility(c_red_unchosen, c_red_chosen) }
+            "orange" -> { switchViewVisibility(c_orange_unchosen, c_orange_chosen) }
+        }
+    }
+
+    private fun switchViewVisibility(toGone: View, toVisible: View){
+        toGone.visibility = View.GONE
+        toVisible.visibility = View.VISIBLE
     }
 
     fun onAddBtnPressed(view: View){
