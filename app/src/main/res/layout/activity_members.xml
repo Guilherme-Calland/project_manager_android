@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_members_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/projectTheme"
@@ -16,12 +17,13 @@
         >
 
         <LinearLayout
+            android:id="@+id/ll_membersList"
             android:layout_width="200sp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginEnd="16sp"
             android:background="@drawable/item_background_dark"
-            android:paddingVertical="8sp"
+            android:paddingTop="16sp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -42,51 +44,75 @@
                 />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/btn_back"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:paddingHorizontal="4sp"
+            android:paddingVertical="8sp"
+            android:layout_marginHorizontal="4sp"
+            android:onClick="onBackBtnPressed"
+            android:textColor="@color/white"
+            android:src="@drawable/outline_arrow_back_black_24dp"
+            />
+
         <LinearLayout
             android:background="@drawable/item_background_dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingVertical="8sp"
+            android:paddingVertical="16sp"
             >
 
             <TextView
                 android:id="@+id/tv_new_member_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8sp"
                 android:text="@string/add_new_member_title"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:layout_marginHorizontal="16sp"
                 />
 
-
-            <EditText
-                android:layout_marginHorizontal="8sp"
-                android:paddingHorizontal="8sp"
-                android:id="@+id/et_member_name"
-                android:textColor="@color/white"
+            <LinearLayout
+                android:id="@+id/ll_add_row"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/item_background"
-                android:hint="@string/hint_name"
-                android:textColorHint="@color/custom_gray_light"
-                android:layout_marginBottom="8sp"
-                />
+                android:layout_height="match_parent"
+                android:padding="8sp"
+                android:orientation="horizontal"
+                >
+
+                <EditText
+                    android:maxLines="1"
+                    android:paddingHorizontal="8sp"
+                    android:id="@+id/et_member_name"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight= "1"
+                    android:background="@drawable/item_background"
+                    android:hint="@string/hint_name"
+                    android:textColorHint="@color/custom_gray_light"
+                    />
+
+            </LinearLayout>
+
+
 
             <LinearLayout
+                android:id="@+id/ll_color_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16sp"
+                android:layout_marginHorizontal="12sp"
                 >
 
                 <LinearLayout
                     android:id="@+id/c_green"
-                    android:layout_width="20sp"
+                    android:layout_width="30sp"
                     android:layout_height="30sp"
                     android:onClick="onColorSelect"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     >
 
                     <TextView
@@ -96,14 +122,13 @@
                         android:padding="8sp"
                         android:background="@drawable/green_background"
                         android:visibility="gone"
-                         />
+                        />
 
 
                     <TextView
                         android:id="@+id/c_green_chosen"
                         android:layout_width="12sp"
                         android:layout_height="12sp"
-                        android:layout_marginRight="8sp"
                         android:background="@drawable/green_background"
                         />
                 </LinearLayout>
@@ -120,7 +145,7 @@
                         android:layout_width="20sp"
                         android:layout_height="20sp"
                         android:background="@drawable/blue_background"
-                         />
+                        />
 
                     <TextView
                         android:id="@+id/c_blue_chosen"
@@ -208,15 +233,41 @@
                 android:id="@+id/btn_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8sp"
+                android:layout_marginTop="8sp"
                 android:layout_marginHorizontal="16sp"
+                android:paddingVertical="8sp"
                 android:background="@drawable/button_background"
                 android:onClick="onAddBtnPressed"
                 android:text="@string/add_new_member_text"
+                android:textSize="18sp"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:id="@+id/btn_add_h"
+                android:visibility="gone"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:layout_marginHorizontal="16sp"
+                android:paddingVertical="12sp"
+                android:background="@drawable/button_background_dark"
+                android:onClick="onAddBtnPressed"
+                android:text="@string/add_new_member_text"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
         </LinearLayout>
 
 

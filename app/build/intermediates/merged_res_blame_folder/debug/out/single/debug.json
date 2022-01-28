@@ -48,6 +48,10 @@
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
+        "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/drawable-v24_outline_arrow_back_white_24dp.png.flat",
+        "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable-v24/outline_arrow_back_white_24dp.png"
+    },
+    {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp"
     },
@@ -92,6 +96,10 @@
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable/blue_background.xml"
     },
     {
+        "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/drawable-v24_outline_reply_white_24dp.png.flat",
+        "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable-v24/outline_reply_white_24dp.png"
+    },
+    {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/drawable-v24_outline_delete_white_24dp.png.flat",
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable-v24/outline_delete_white_24dp.png"
     },
@@ -120,6 +128,10 @@
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable-v24/outline_mode_edit_white_24dp.png"
     },
     {
+        "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/drawable_button_background_dark.xml.flat",
+        "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable/button_background_dark.xml"
+    },
+    {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp"
     },
@@ -138,6 +150,10 @@
     {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/drawable-v24_outline_arrow_back_black_24dp.png.flat",
+        "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable-v24/outline_arrow_back_black_24dp.png"
     },
     {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/layout_activity_add_task.xml.flat",

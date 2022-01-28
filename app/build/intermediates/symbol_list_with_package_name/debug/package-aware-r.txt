@@ -2464,6 +2464,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable button_background
+drawable button_background_dark
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2526,11 +2527,14 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable orange_background
+drawable outline_arrow_back_black_24dp
+drawable outline_arrow_back_white_24dp
 drawable outline_backward_white
 drawable outline_delete_white_24dp
 drawable outline_forward_white_24dp
 drawable outline_mode_edit_white_24dp
 drawable outline_people_white_24dp
+drawable outline_reply_white_24dp
 drawable purple_background
 drawable red_background
 drawable test_custom_background
@@ -2636,6 +2640,8 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id btn_add
+id btn_add_h
+id btn_back
 id buttonPanel
 id c_blue
 id c_blue_chosen
@@ -2798,8 +2804,12 @@ id line3
 id linear
 id listMode
 id list_item
+id ll_add_row
+id ll_color_items
 id ll_icons
 id ll_member
+id ll_membersList
+id ll_members_activity
 id ll_task
 id masked
 id match_constraint
