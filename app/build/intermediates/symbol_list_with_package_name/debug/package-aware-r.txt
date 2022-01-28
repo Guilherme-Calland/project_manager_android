@@ -2637,6 +2637,11 @@ id bounceEnd
 id bounceStart
 id btn_add
 id buttonPanel
+id c_blue
+id c_green
+id c_orange
+id c_purple
+id c_red
 id cache_measures
 id callMeasure
 id cancel_button
@@ -2716,6 +2721,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id et_member_name
 id et_task
 id exitUntilCollapsed
 id expand_activities_button
@@ -3004,6 +3010,8 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tv_info
+id tv_name
+id tv_new_member_title
 id tv_responsible
 id tv_title
 id unchecked
@@ -3149,6 +3157,7 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout member
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title

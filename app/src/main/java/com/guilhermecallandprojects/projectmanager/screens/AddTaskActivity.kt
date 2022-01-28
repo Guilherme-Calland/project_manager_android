@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
+import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_add_task.*
 
 class AddTaskActivity : AppCompatActivity() {
@@ -65,9 +66,9 @@ class AddTaskActivity : AppCompatActivity() {
             }
 
             if(result > 0){
-                Log.i("projectmanagerapp", "$addOrEdit to database successful. (AddTaskActivity)")
+                Log.i(Util.LOG_KEY, "$addOrEdit to database successful. (AddTaskActivity)")
             }else{
-                Log.e("projectmanagerapp", "fail on database $addOrEdit. (AddTaskActivity)")
+                Log.e(Util.LOG_KEY, "fail on database $addOrEdit. (AddTaskActivity)")
             }
 
             backToMainActivity()

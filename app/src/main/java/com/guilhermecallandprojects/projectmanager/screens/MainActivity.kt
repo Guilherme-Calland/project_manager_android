@@ -14,6 +14,7 @@ import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
 import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
+import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -56,12 +57,12 @@ class MainActivity : AppCompatActivity() {
         if (model.id != null) {
             val result: Int = todoDB.delete(model.id)
             if (result > 0) {
-                Log.i("projectmanagerapp", "element was deleted successfully! (MainActivity)")
+                Log.i(Util.LOG_KEY, "element was deleted successfully! (MainActivity)")
             } else {
-                Log.e("projectmanagerapp", "error on deleting the element. (MainActivity)")
+                Log.e(Util.LOG_KEY, "error on deleting the element. (MainActivity)")
             }
         } else {
-            Log.e("projectmanagerapp", "was passed a null id for deletion. (MainActivity)")
+            Log.e(Util.LOG_KEY, "was passed a null id for deletion. (MainActivity)")
         }
     }
 

@@ -124,6 +124,10 @@
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
+        "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/layout_member.xml.flat",
+        "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/layout/member.xml"
+    },
+    {
         "merged": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/merged_res/debug/drawable-v24_baseline_search_white_24dp.png.flat",
         "source": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/src/main/res/drawable-v24/baseline_search_white_24dp.png"
     },

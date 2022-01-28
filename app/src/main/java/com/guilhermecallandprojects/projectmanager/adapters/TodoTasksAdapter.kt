@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.model.Task
+import com.guilhermecallandprojects.projectmanager.utils.Util
 
 class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
     RecyclerView.Adapter<TaskHolder>() {
@@ -30,7 +31,7 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
             if (onPressedInterface != null) {
                 onPressedInterface?.onDelete(position, task)
             } else {
-                Log.e("projectmanagerapp", "error on delete button. (TodoTasksAdapter)")
+                Log.e(Util.LOG_KEY, "error on delete button. (TodoTasksAdapter)")
             }
         }
 
@@ -38,7 +39,7 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
             if (onPressedInterface != null) {
                 onPressedInterface?.onEdit(position, task)
             } else {
-                Log.e("projectmanagerapp", "error on edit button. (TodoTasksAdapter)")
+                Log.e(Util.LOG_KEY, "error on edit button. (TodoTasksAdapter)")
             }
         }
     }
