@@ -24,6 +24,7 @@ class AddTaskActivity : AppCompatActivity() {
     private var info: String? = null
     private var responsible: String? = null
     private var addOrEdit: String = "Add"
+    private lateinit var todoDB: TodoDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class AddTaskActivity : AppCompatActivity() {
         setButtonListeners()
         retrieveBundle()
         setTaskEditTextListeners()
+        todoDB = TodoDatabaseHelper(this)
         tv_title.text = "$addOrEdit task"
 
     }
@@ -107,7 +109,6 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     private fun addTask(task: Task){
-        val todoDB = TodoDatabaseHelper(this)
         val info = et_task.text.toString()
 
         if(!blanckTask()){

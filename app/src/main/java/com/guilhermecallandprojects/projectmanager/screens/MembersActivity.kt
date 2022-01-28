@@ -19,8 +19,9 @@ class MembersActivity : AppCompatActivity() {
     private lateinit var membersList: ArrayList<Member>
     private lateinit var membersDB: MembersDatabaseHelper
     private lateinit var memberAdapter: MemberAdapter
-    private lateinit var memberName: String
-    private lateinit var memberColor: String
+    private var memberid: Int? = null
+    private var memberName: String ?= null
+    private var memberColor: String ?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,33 @@ class MembersActivity : AppCompatActivity() {
         setActionBarProperties()
         initializeMemberList()
         setNameEditTextListeners()
+        setButtonListeners()
+    }
+
+    private fun setButtonListeners() {
+        btn_add_h.setOnClickListener { addMember() }
+        btn_add.setOnClickListener { addMember() }
+        btn_back.setOnClickListener { resetLayout() }
+    }
+
+    private fun addMember() {
+        if (!blankName()) {
+            memberName = et_member_name.text.toString()
+            val newMember = Member(name = memberName!!, color = memberColor ?: "green")
+            var result: Long = 0
+            result = membersDB.create(newMember)
+            if (result > 0) {
+                Log.i(Util.LOG_KEY, "insert into members database successful.\n(MembersActivity)")
+                Toast.makeText(this, "$memberName was added as a member.", Toast.LENGTH_SHORT)
+                    .show()
+                et_member_name.text.clear()
+                readFromDatabase()
+            } else {
+                Log.e(Util.LOG_KEY, "failure in adding member to database.\n(MembersActivity)")
+            }
+        } else {
+            Toast.makeText(this, "Please insert a name.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setNameEditTextListeners() {
@@ -56,11 +84,27 @@ class MembersActivity : AppCompatActivity() {
 
     inner class OnPressedConcreteClass : MemberAdapter.OnPressedInterface{
         override fun onDelete(position: Int, model: Member) {
-            Log.i("testing", "I am testing the delete button.")
+            deleteMember(model)
+            readFromDatabase()
         }
 
         override fun onEdit(position: Int, model: Member) {
-            Log.i("testing", "I am testing the edit button.")
+        }
+    }
+
+    private fun deleteMember(model: Member) {
+        if (model.id != null) {
+            val result: Int = membersDB.delete(model.id)
+            if (result > 0) {
+                Log.i(Util.LOG_KEY, "element was deleted successfully.\n(MembersActivity)")
+            } else {
+                Log.e(Util.LOG_KEY, "error on deleting the element.\n(MemberActivity)")
+            }
+        } else {
+            Log.e(
+                Util.LOG_KEY,
+                "reading a null id while trying to delete on database.\n(MembersActivity)"
+            )
         }
     }
 
@@ -117,25 +161,11 @@ class MembersActivity : AppCompatActivity() {
         toVisible.visibility = VISIBLE
     }
 
-    fun onAddBtnPressed(view: View){
-        if(!blankName()){
-            memberName = et_member_name.text.toString()
-            val newMember = Member(name = memberName, color = memberColor)
-            val result: Long = membersDB.create(newMember)
-            if(result > 0){
-                Log.i(Util.LOG_KEY, "insert into members database successful.\n(MembersActivity)")
-                Toast.makeText(this, "$memberName was added as a member.", Toast.LENGTH_SHORT).show()
-                et_member_name.text.clear()
-                readFromDatabase()
-            }else{
-                Log.e(Util.LOG_KEY, "failure in adding member to database.\n(MembersActivity)")
-            }
-        }else{
-            Toast.makeText(this, "Please insert a name.", Toast.LENGTH_SHORT).show()
-        }
+    fun onBackBtnPressed(View: View){
+
     }
 
-    fun onBackBtnPressed(View: View){
+    private fun resetLayout(){
         ll_membersList.visibility = VISIBLE
         btn_add.visibility = VISIBLE
         tv_new_member_title.visibility = VISIBLE
@@ -150,7 +180,7 @@ class MembersActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
     }
 
-    private fun blankName() = et_member_name.text.isEmpty()
+    private fun blankName() = et_member_name.text.isNullOrEmpty()
 
     private fun setActionBarProperties() {
         supportActionBar?.elevation = 0F

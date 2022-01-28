@@ -19,7 +19,7 @@ class MembersDatabaseHelper(context: Context)
     private val columnColor: String = "member_color"
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("""CREATE TABLE IF NOT EXISTS $tableMembers ($columnID INTEGER PRIMARY KEY, $columnName TEXT, $columnColor TEXT)""")
+//        db.execSQL("""CREATE TABLE IF NOT EXISTS $tableMembers ($columnID INTEGER PRIMARY KEY, $columnName TEXT, $columnColor TEXT)""")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
@@ -65,6 +65,11 @@ class MembersDatabaseHelper(context: Context)
         Log.i(Util.LOG_KEY, "retrieved data from members database successfully.\n(MembersDatabaseHelper)")
         cursor.close()
         return membersList
+    }
+
+    fun delete(id : Int) : Int{
+        val result = writableDatabase.delete(tableMembers, "$columnID=$id", null)
+        return result
     }
 
     private fun validIndexes(
