@@ -57,12 +57,12 @@ class MainActivity : AppCompatActivity() {
         if (model.id != null) {
             val result: Int = todoDB.delete(model.id)
             if (result > 0) {
-                Log.i(Util.LOG_KEY, "element was deleted successfully! (MainActivity)")
+                Log.i(Util.LOG_KEY, "element was deleted successfully!\n(MainActivity)")
             } else {
-                Log.e(Util.LOG_KEY, "error on deleting the element. (MainActivity)")
+                Log.e(Util.LOG_KEY, "error on deleting the element.\n(MainActivity)")
             }
         } else {
-            Log.e(Util.LOG_KEY, "was passed a null id for deletion. (MainActivity)")
+            Log.e(Util.LOG_KEY, "was passed a null id for deletion.\n(MainActivity)")
         }
     }
 

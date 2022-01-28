@@ -1,13 +1,16 @@
 package com.guilhermecallandprojects.projectmanager.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.model.Member
 import com.guilhermecallandprojects.projectmanager.model.Task
 
-class MemberAdapter(private var members: ArrayList<Member>)
+class MemberAdapter(private var context: Context, private var members: ArrayList<Member>)
     : RecyclerView.Adapter<MemberHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberHolder {
@@ -26,7 +29,7 @@ class MemberAdapter(private var members: ArrayList<Member>)
             "purple" -> color = R.color.light_purple
             "orange" -> color = R.color.light_orange
         }
-        holder.name.setTextColor(color)
+        holder.name.setTextColor(getColor(context,color))
     }
 
     override fun getItemCount(): Int {

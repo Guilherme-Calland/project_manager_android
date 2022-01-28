@@ -2905,6 +2905,7 @@ int id rounded 0x7f08015a
 int id row_index_key 0x7f08015b
 int id rv_doing 0x7f0801ea
 int id rv_done 0x7f0801eb
+int id rv_members_list 0x7f0801ff
 int id rv_responsible_list 0x7f0801e2
 int id rv_todo_list 0x7f0801e6
 int id save_non_transition_alpha 0x7f08015c

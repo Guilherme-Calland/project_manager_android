@@ -31,7 +31,7 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
             if (onPressedInterface != null) {
                 onPressedInterface?.onDelete(position, task)
             } else {
-                Log.e(Util.LOG_KEY, "error on delete button. (TodoTasksAdapter)")
+                Log.e(Util.LOG_KEY, "error on delete button.\n(TodoTasksAdapter)")
             }
         }
 
@@ -39,7 +39,7 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
             if (onPressedInterface != null) {
                 onPressedInterface?.onEdit(position, task)
             } else {
-                Log.e(Util.LOG_KEY, "error on edit button. (TodoTasksAdapter)")
+                Log.e(Util.LOG_KEY, "error on edit button.\n(TodoTasksAdapter)")
             }
         }
     }

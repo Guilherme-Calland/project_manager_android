@@ -66,9 +66,9 @@ class AddTaskActivity : AppCompatActivity() {
             }
 
             if(result > 0){
-                Log.i(Util.LOG_KEY, "$addOrEdit to database successful. (AddTaskActivity)")
+                Log.i(Util.LOG_KEY, "$addOrEdit to database successful.\n(AddTaskActivity)")
             }else{
-                Log.e(Util.LOG_KEY, "fail on database $addOrEdit. (AddTaskActivity)")
+                Log.e(Util.LOG_KEY, "fail on database $addOrEdit.\n(AddTaskActivity)")
             }
 
             backToMainActivity()

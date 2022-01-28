@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.setPadding
 import com.guilhermecallandprojects.projectmanager.R
+import com.guilhermecallandprojects.projectmanager.adapters.MemberAdapter
 import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Member
 import com.guilhermecallandprojects.projectmanager.utils.Util
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_members.*
 class MembersActivity : AppCompatActivity() {
     private lateinit var membersList: ArrayList<Member>
     private lateinit var membersDB: MembersDatabaseHelper
+    private lateinit var memberAdapter: MemberAdapter
     private lateinit var memberName: String
     private lateinit var memberColor: String
 
@@ -22,9 +24,24 @@ class MembersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_members)
         setActionBarProperties()
+        initializeMemberList()
+    }
+
+    private fun initializeMemberList() {
         membersList = ArrayList()
         membersDB = MembersDatabaseHelper(this)
-        changeColor("green")
+        memberAdapter = MemberAdapter(this, membersList)
+        rv_members_list.adapter = memberAdapter
+        readFromDatabase()
+    }
+
+    private fun readFromDatabase() {
+        membersList.clear()
+        val membersTemp = membersDB.read()
+        for(m in membersTemp){
+            membersList.add(m)
+        }
+        memberAdapter.notifyDataSetChanged()
     }
 
     fun onColorSelect(view: View){
@@ -68,9 +85,9 @@ class MembersActivity : AppCompatActivity() {
             val newMember = Member(name = memberName, color = memberColor)
             val result: Long = membersDB.create(newMember)
             if(result > 0){
-                Log.i(Util.LOG_KEY, "insert into members database successful. (MembersActivity)")
+                Log.i(Util.LOG_KEY, "insert into members database successful.\n(MembersActivity)")
             }else{
-                Log.e(Util.LOG_KEY, "failure in adding member to database. (MembersActivity)")
+                Log.e(Util.LOG_KEY, "failure in adding member to database.\n(MembersActivity)")
             }
             finish()
         }else{

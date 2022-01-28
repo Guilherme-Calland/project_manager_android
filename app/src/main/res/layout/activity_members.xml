@@ -21,8 +21,8 @@
             android:orientation="vertical"
             android:layout_marginRight="16sp"
             android:background="@drawable/item_background_dark"
-            android:paddingHorizontal="16sp"
-            android:paddingVertical="8sp"
+            android:paddingTop="8sp"
+            android:paddingBottom="4sp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -31,10 +31,12 @@
                 android:text="@string/members_title"
                 android:textSize="24sp"
                 android:layout_marginBottom="8sp"
+                android:paddingHorizontal="16sp"
                 />
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_members_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -47,7 +49,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingVertical="8sp"
-            android:paddingHorizontal="16sp"
             >
 
             <TextView
@@ -57,9 +58,14 @@
                 android:layout_marginBottom="8sp"
                 android:text="@string/add_new_member_title"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:layout_marginHorizontal="16sp"
+                />
+
 
             <EditText
+                android:layout_marginHorizontal="8sp"
+                android:paddingHorizontal="8sp"
                 android:id="@+id/et_member_name"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
@@ -73,6 +79,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16sp"
                 >
 
                 <LinearLayout
@@ -85,10 +92,11 @@
 
                     <TextView
                         android:id="@+id/c_green_unchosen"
-                        android:layout_width="15sp"
-                        android:layout_height="15sp"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
                         android:padding="8sp"
                         android:background="@drawable/green_background"
+                        android:visibility="gone"
                          />
 
 
@@ -98,7 +106,6 @@
                         android:layout_height="12sp"
                         android:layout_marginRight="8sp"
                         android:background="@drawable/green_background"
-                        android:visibility="gone"
                         />
                 </LinearLayout>
 
@@ -111,8 +118,8 @@
                     >
                     <TextView
                         android:id="@+id/c_blue_unchosen"
-                        android:layout_width="15sp"
-                        android:layout_height="15sp"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
                         android:background="@drawable/blue_background"
                          />
 
@@ -137,8 +144,8 @@
 
                     <TextView
                         android:id="@+id/c_purple_unchosen"
-                        android:layout_width="15sp"
-                        android:layout_height="15sp"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
                         android:background="@drawable/purple_background"/>
 
                     <TextView
@@ -159,8 +166,8 @@
                     android:gravity="center">
                     <TextView
                         android:id="@+id/c_red_unchosen"
-                        android:layout_width="15sp"
-                        android:layout_height="15sp"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
                         android:background="@drawable/red_background"/>
 
                     <TextView
@@ -181,8 +188,8 @@
 
                     <TextView
                         android:id="@+id/c_orange_unchosen"
-                        android:layout_width="15sp"
-                        android:layout_height="15sp"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
                         android:background="@drawable/orange_background" />
 
                     <TextView
@@ -203,6 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8sp"
+                android:layout_marginHorizontal="16sp"
                 android:background="@drawable/button_background"
                 android:onClick="onAddBtnPressed"
                 android:text="@string/add_new_member_text"
