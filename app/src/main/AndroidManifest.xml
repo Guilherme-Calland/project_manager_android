@@ -15,8 +15,13 @@
             android:exported="true"
             android:parentActivityName=".screens.MainActivity"
             android:screenOrientation="userLandscape">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+
         <activity
             android:name=".screens.AddTaskActivity"
             android:exported="true"
@@ -29,11 +34,7 @@
             android:exported="true"
             android:screenOrientation="userLandscape">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>

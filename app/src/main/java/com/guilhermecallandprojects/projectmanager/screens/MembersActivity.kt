@@ -54,11 +54,22 @@ class MembersActivity : AppCompatActivity() {
         }
     }
 
+    inner class OnPressedConcreteClass : MemberAdapter.OnPressedInterface{
+        override fun onDelete(position: Int, model: Member) {
+            Log.i("testing", "I am testing the delete button.")
+        }
+
+        override fun onEdit(position: Int, model: Member) {
+            Log.i("testing", "I am testing the edit button.")
+        }
+    }
+
     private fun initializeMemberList() {
         membersList = ArrayList()
         membersDB = MembersDatabaseHelper(this)
         memberAdapter = MemberAdapter(this, membersList)
         rv_members_list.adapter = memberAdapter
+        memberAdapter.setOnPressedObject( OnPressedConcreteClass() )
         readFromDatabase()
     }
 

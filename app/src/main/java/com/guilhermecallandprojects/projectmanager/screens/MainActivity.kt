@@ -18,6 +18,7 @@ import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
 import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
+import kotlinx.android.synthetic.main.activity_add_task.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_members.*
 import kotlinx.android.synthetic.main.task.*
@@ -33,10 +34,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setActionBarProperties()
+        initializeTodoList()
+    }
+
+    private fun initializeTodoList() {
         todoTasks = ArrayList()
         todoTasksAdapter = TodoTasksAdapter(todoTasks)
         rv_todo_list.adapter = todoTasksAdapter
-        todoTasksAdapter.setOnPressedListener(OnPressedConcreteClass())
+        todoTasksAdapter.setOnPressedObject(OnPressedConcreteClass())
         todoDB = TodoDatabaseHelper(this)
         readFromDatabase()
     }

@@ -3,6 +3,8 @@ package com.guilhermecallandprojects.projectmanager.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -13,7 +15,8 @@ import com.guilhermecallandprojects.projectmanager.utils.Util
 
 class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
     RecyclerView.Adapter<TaskHolder>() {
-    private var onPressedInterface: OnPressedInterface? = null
+    private var holderList: ArrayList<TaskHolder> = ArrayList()
+    private var onPressedObject: OnPressedInterface? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.task, parent, false)
@@ -21,6 +24,8 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
     }
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
+        holderList.add(holder)
+
         val task = todoTasks[position]
         holder.info.text = task.info
         if(task.responsible == ""){
@@ -29,16 +34,29 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
             holder.responsible.text = task.responsible
         }
 
-        holder.deleteButton.setOnClickListener { onPressedInterface?.onDelete(position, task) }
-        holder.editButton.setOnClickListener { onPressedInterface?.onEdit(position, task) }
+        holder.deleteButton.setOnClickListener { onPressedObject?.onDelete(position, task) }
+        holder.editButton.setOnClickListener { onPressedObject?.onEdit(position, task) }
         holder.task.setOnClickListener { toggleIconsVisibility(holder) }
     }
 
     private fun toggleIconsVisibility(holder: TaskHolder) {
+        resetIconViews(holder)
+        toggleCurrentIconView(holder)
+    }
+
+    private fun toggleCurrentIconView(holder: TaskHolder) {
         if (holder.iconsRow.isGone) {
-            holder.iconsRow.visibility = View.VISIBLE
+            holder.iconsRow.visibility = VISIBLE
         } else {
-            holder.iconsRow.visibility = View.GONE
+            holder.iconsRow.visibility = GONE
+        }
+    }
+
+    private fun resetIconViews(holder: TaskHolder) {
+        for (h in holderList) {
+            if (h != holder) {
+                h.iconsRow.visibility = GONE
+            }
         }
     }
 
@@ -51,7 +69,7 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
         fun onEdit(position: Int, model: Task)
     }
 
-    fun setOnPressedListener(onPressedInterface: OnPressedInterface) {
-        this.onPressedInterface = onPressedInterface
+    fun setOnPressedObject(onPressedObject: OnPressedInterface) {
+        this.onPressedObject = onPressedObject
     }
 }
