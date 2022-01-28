@@ -3,6 +3,7 @@ package com.guilhermecallandprojects.projectmanager.adapters
 import android.media.Image
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_add_task.view.*
@@ -14,4 +15,6 @@ class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     var deleteButton : ImageView = itemView.iv_delete
     var editButton : ImageView = itemView.iv_edit
     var nextButton : ImageView = itemView.iv_throwNextCol
+    var task: LinearLayout = itemView.ll_task
+    var iconsRow: LinearLayout = itemView.ll_icons
 }

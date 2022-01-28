@@ -4,6 +4,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.model.Task
@@ -27,20 +29,16 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
             holder.responsible.text = task.responsible
         }
 
-        holder.deleteButton.setOnClickListener {
-            if (onPressedInterface != null) {
-                onPressedInterface?.onDelete(position, task)
-            } else {
-                Log.e(Util.LOG_KEY, "error on delete button.\n(TodoTasksAdapter)")
-            }
-        }
+        holder.deleteButton.setOnClickListener { onPressedInterface?.onDelete(position, task) }
+        holder.editButton.setOnClickListener { onPressedInterface?.onEdit(position, task) }
+        holder.task.setOnClickListener { toggleIconsVisibility(holder) }
+    }
 
-        holder.editButton.setOnClickListener {
-            if (onPressedInterface != null) {
-                onPressedInterface?.onEdit(position, task)
-            } else {
-                Log.e(Util.LOG_KEY, "error on edit button.\n(TodoTasksAdapter)")
-            }
+    private fun toggleIconsVisibility(holder: TaskHolder) {
+        if (holder.iconsRow.isGone) {
+            holder.iconsRow.visibility = View.VISIBLE
+        } else {
+            holder.iconsRow.visibility = View.GONE
         }
     }
 

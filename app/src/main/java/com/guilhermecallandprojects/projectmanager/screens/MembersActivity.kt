@@ -89,7 +89,6 @@ class MembersActivity : AppCompatActivity() {
             }else{
                 Log.e(Util.LOG_KEY, "failure in adding member to database.\n(MembersActivity)")
             }
-            finish()
         }else{
             Toast.makeText(this, "Please insert a name.", Toast.LENGTH_LONG).show()
         }

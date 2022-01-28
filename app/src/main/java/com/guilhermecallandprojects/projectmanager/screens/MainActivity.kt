@@ -16,6 +16,7 @@ import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.task.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var todoTasks: ArrayList<Task>
