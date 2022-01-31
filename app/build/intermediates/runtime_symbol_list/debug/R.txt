@@ -1760,8 +1760,8 @@ int color primary_text_default_material_dark 0x7f050243
 int color primary_text_default_material_light 0x7f050244
 int color primary_text_disabled_material_dark 0x7f050245
 int color primary_text_disabled_material_light 0x7f050246
-int color projectBackgroundColor 0x7f050263
-int color projectTheme 0x7f050247
+int color projectThemeBackground 0x7f050265
+int color projectThemeButtons 0x7f050266
 int color purple 0x7f050248
 int color purple_200 0x7f050249
 int color purple_500 0x7f05024a
@@ -1785,6 +1785,8 @@ int color teal_700 0x7f05025b
 int color test_color 0x7f05025c
 int color test_mtrl_calendar_day 0x7f05025d
 int color test_mtrl_calendar_day_selected 0x7f05025e
+int color themePurpleBackground 0x7f050267
+int color themePurpleButtons 0x7f050268
 int color tooltip_background_dark 0x7f05025f
 int color tooltip_background_light 0x7f050260
 int color transparent 0x7f050261
@@ -2645,7 +2647,6 @@ int id bounceStart 0x7f080062
 int id btn_add 0x7f080063
 int id btn_add_h 0x7f080064
 int id btn_back_h 0x7f080065
-int id btn_cancel 0x7f080066
 int id buttonPanel 0x7f080067
 int id c_blue 0x7f080068
 int id c_blue_chosen 0x7f080069

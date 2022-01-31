@@ -4,11 +4,11 @@
 
         <item name="elevation">0dp</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/projectTheme</item>
-        <item name="colorPrimaryVariant">@color/projectTheme</item>
+        <item name="colorPrimary">@color/projectThemeBackground</item>
+        <item name="colorPrimaryVariant">@color/projectThemeBackground</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/projectTheme</item>
+        <item name="colorSecondary">@color/projectThemeButtons</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

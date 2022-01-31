@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android_projects/project_manager_android/app/src/main/res/drawable/button_background.xml" value="0.142" />
         <entry key="..\:/android_projects/project_manager_android/app/src/main/res/drawable/item_background.xml" value="0.1" />
         <entry key="..\:/android_projects/project_manager_android/app/src/main/res/layout/activity_add_task.xml" value="0.25" />
-        <entry key="..\:/android_projects/project_manager_android/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/android_projects/project_manager_android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/android_projects/project_manager_android/app/src/main/res/layout/activity_members.xml" value="0.16" />
         <entry key="..\:/android_projects/project_manager_android/app/src/main/res/layout/member.xml" value="0.25" />
         <entry key="..\:/android_projects/project_manager_android/app/src/main/res/layout/task.xml" value="0.33" />

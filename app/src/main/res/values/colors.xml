@@ -26,6 +26,10 @@
     <color name="light_gray">#7A7A7A</color>
 
     <!--possible project themes-->
-    <color name="projectTheme">#483564</color>
-    <color name="projectBackgroundColor">@color/gray</color>
+    <color name="themePurpleBackground">#373040</color>
+    <color name="themePurpleButtons">#483564</color>
+
+<!--    project theme-->
+    <color name="projectThemeBackground">@color/themePurpleBackground</color>
+    <color name="projectThemeButtons">@color/themePurpleButtons</color>
 </resources>

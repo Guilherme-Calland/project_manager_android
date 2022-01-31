@@ -4,7 +4,7 @@
         <shape
             android:shape = "rectangle"
             >
-            <solid android:color="@color/projectTheme"/>
+            <solid android:color="@color/projectThemeButtons"/>
             <corners android:radius="5sp"/>
             <padding
                 android:bottom="5sp"

@@ -1761,8 +1761,8 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
-color projectBackgroundColor
-color projectTheme
+color projectThemeBackground
+color projectThemeButtons
 color purple
 color purple_200
 color purple_500
@@ -1786,6 +1786,8 @@ color teal_700
 color test_color
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
+color themePurpleBackground
+color themePurpleButtons
 color tooltip_background_dark
 color tooltip_background_light
 color transparent
@@ -2646,7 +2648,6 @@ id bounceStart
 id btn_add
 id btn_add_h
 id btn_back_h
-id btn_cancel
 id buttonPanel
 id c_blue
 id c_blue_chosen

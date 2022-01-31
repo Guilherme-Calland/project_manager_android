@@ -5,7 +5,7 @@
     android:id="@+id/ll_add_task_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/projectTheme"
+    android:background="@color/projectThemeBackground"
     android:gravity="center"
     android:orientation="horizontal"
     tools:context=".screens.AddTaskActivity">
@@ -16,6 +16,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+<!--back arrow-->
         <ImageView
             android:id="@+id/arrow_back"
             android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
             android:textColor="@color/white"
             android:visibility="gone" />
 
-
+<!--new task-->
         <LinearLayout
             android:layout_width="250sp"
             android:layout_height="wrap_content"
@@ -38,7 +39,6 @@
             android:paddingVertical="16sp"
             android:layout_marginHorizontal="4sp"
             >
-
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
@@ -48,7 +48,6 @@
                 android:text="@string/activity_add_task_new_task_title"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
-
             <EditText
                 android:id="@+id/et_task"
                 android:layout_width="match_parent"
@@ -62,8 +61,6 @@
                 android:paddingVertical="8sp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/light_gray" />
-
-
             <TextView
                 android:id="@+id/btn_add"
                 android:layout_width="match_parent"
@@ -76,17 +73,15 @@
                 android:text="@string/button_add"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
-
-
         </LinearLayout>
 
+<!--responsible-->
         <LinearLayout
             android:id="@+id/ll_responsible"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4sp"
             android:gravity="center">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,12 +89,11 @@
                 android:orientation="vertical"
                 android:paddingTop="16sp"
                 android:paddingBottom="16sp">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12sp"
-                    android:layout_marginLeft="8sp"
+                    android:layout_marginStart="8sp"
                     android:layout_marginBottom="4sp"
                     android:text="@string/activity_add_task_responsible_title"
                     android:textColor="@color/white" />
@@ -120,6 +114,7 @@
             </LinearLayout>
         </LinearLayout>
 
+<!--member list-->
         <LinearLayout
             android:id="@+id/ll_responsible_list"
             android:layout_width="150sp"
@@ -131,7 +126,6 @@
             android:visibility="gone"
             android:layout_marginHorizontal="4sp"
             >
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_responsible_list"
                 android:layout_width="match_parent"
@@ -139,6 +133,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
 
+<!--buttons for edit text mode-->
         <LinearLayout
             android:id="@+id/ll_buttons_h"
             android:layout_width="wrap_content"
@@ -146,7 +141,6 @@
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone">
-
             <TextView
                 android:id="@+id/btn_add_h"
                 android:layout_width="120sp"
@@ -159,8 +153,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:visibility="visible" />
-
+            />
             <TextView
                 android:id="@+id/btn_back_h"
                 android:layout_width="120sp"
@@ -173,12 +166,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:visibility="visible" />
-
+                 />
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </LinearLayout>
