@@ -6,53 +6,73 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.SearchView
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import com.guilhermecallandprojects.projectmanager.R
-import com.guilhermecallandprojects.projectmanager.adapters.TodoTasksAdapter
-import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
+import com.guilhermecallandprojects.projectmanager.adapters.TaskAdapter
+import com.guilhermecallandprojects.projectmanager.database.TaskDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
-import kotlinx.android.synthetic.main.activity_add_task.view.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_members.*
-import kotlinx.android.synthetic.main.task.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var todoTasks: ArrayList<Task>
+
+    //lists
+    private lateinit var todoTasks : ArrayList<Task>
     private lateinit var doingTasks: ArrayList<Task>
-    private lateinit var doneTasks: ArrayList<Task>
-    private lateinit var todoTasksAdapter : TodoTasksAdapter
-    private lateinit var todoDB :TodoDatabaseHelper
+    private lateinit var doneTasks : ArrayList<Task>
+
+    //adapters
+    private lateinit var todoAdapter : TaskAdapter
+    private lateinit var doingAdapter: TaskAdapter
+    private lateinit var doneAdapter : TaskAdapter
+
+    //databases
+    private lateinit var todoDB : TaskDatabaseHelper
+    private lateinit var doingDB: TaskDatabaseHelper
+    private lateinit var doneDB : TaskDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setActionBarProperties()
-        initializeTodoList()
+        initializeLists()
     }
 
-    private fun initializeTodoList() {
-        todoTasks = ArrayList()
-        todoTasksAdapter = TodoTasksAdapter(this, todoTasks)
-        rv_todo_list.adapter = todoTasksAdapter
-        todoTasksAdapter.setOnPressedObject(OnPressedConcreteClass())
-        todoDB = TodoDatabaseHelper(this)
+    private fun initializeLists() {
+        //lists
+        todoTasks  = ArrayList()
+        doingTasks = ArrayList()
+        doneTasks  = ArrayList()
+
+        //adapters
+        todoAdapter  = TaskAdapter(this, todoTasks)
+        todoAdapter.setOnPressedObject( OnPressedConcreteClass() )
+        rv_todo.adapter = todoAdapter
+
+        doingAdapter = TaskAdapter(this, doingTasks)
+        doingAdapter.setOnPressedObject( OnPressedConcreteClass() )
+        rv_doing.adapter = doingAdapter
+
+        doneAdapter  = TaskAdapter(this, doneTasks)
+        doingAdapter.setOnPressedObject( OnPressedConcreteClass() )
+        rv_done.adapter = doneAdapter
+
+        //databases
+        todoDB  = TaskDatabaseHelper(this, "todo_database")
+        doingDB = TaskDatabaseHelper(this, "doing_database")
+        doneDB  = TaskDatabaseHelper(this, "done_database")
         readFromDatabase()
     }
 
     override fun onResume() {
         readFromDatabase()
-        todoTasksAdapter.resetIconViews()
+        todoAdapter.resetIconViews()
         super.onResume()
     }
 
-    inner class OnPressedConcreteClass : TodoTasksAdapter.OnPressedInterface{
+    inner class OnPressedConcreteClass : TaskAdapter.OnPressedInterface{
         override fun onDelete(position: Int, model: Task){
             deleteTask(model)
             readFromDatabase()
@@ -78,12 +98,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun readFromDatabase(query: String = "%") {
+        reloadLists(query)
+        notifyAdapters()
+    }
+
+    private fun reloadLists(query: String) {
         todoTasks.clear()
         val todoTasksTemp = todoDB.read(query)
-        for(t in todoTasksTemp){
+        for (t in todoTasksTemp) {
             todoTasks.add(t)
         }
-        todoTasksAdapter.notifyDataSetChanged()
+
+        doingTasks.clear()
+        val doingTasksTemp = doingDB.read(query)
+        for (t in doingTasksTemp) {
+            doingTasks.add(t)
+        }
+
+        doneTasks.clear()
+        val doneTasksTemp = doneDB.read(query)
+        for (t in doneTasksTemp) {
+            doneTasks.add(t)
+        }
+    }
+
+    private fun notifyAdapters() {
+        todoAdapter.notifyDataSetChanged()
+        doingAdapter.notifyDataSetChanged()
+        doneAdapter.notifyDataSetChanged()
     }
 
     private fun setActionBarProperties() {

@@ -14,7 +14,7 @@ import android.widget.Toast
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.ResponsibleMemberAdapter
 import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
-import com.guilhermecallandprojects.projectmanager.database.TodoDatabaseHelper
+import com.guilhermecallandprojects.projectmanager.database.TaskDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Member
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
@@ -28,7 +28,7 @@ class AddTaskActivity : AppCompatActivity() {
 
     private var currentResponsible: String ?= null
 
-    private lateinit var todoDB: TodoDatabaseHelper
+    private lateinit var todoDB: TaskDatabaseHelper
     private lateinit var membersDB: MembersDatabaseHelper
     private lateinit var memberList: ArrayList<Member>
     private lateinit var responsibleMemberAdapter: ResponsibleMemberAdapter
@@ -40,7 +40,7 @@ class AddTaskActivity : AppCompatActivity() {
         setButtonListeners()
         retrieveBundle()
         setTaskEditTextListeners()
-        todoDB = TodoDatabaseHelper(this)
+        todoDB = TaskDatabaseHelper(this)
         initializeMembersList()
     }
 
