@@ -81,6 +81,32 @@ class MembersDatabaseHelper(context: Context)
         return result
     }
 
+    fun fetchResponsible(queryArg: String) : Member?{
+        var responsible: Member? = null
+        val query =
+            """SELECT * FROM $tableMembers WHERE $columnName LIKE '$queryArg' OR $columnColor LIKE '$queryArg'"""
+        val db = this.readableDatabase
+        val cursor : Cursor = db.rawQuery(query, null)
+        try{
+            if (cursor.moveToFirst()) {
+                val resIndex = cursor.getColumnIndex(columnName)
+                val colorIndex = cursor.getColumnIndex(columnColor)
+                if (resIndex >= 0 && colorIndex >= 0) {
+                    val name = cursor.getString(resIndex)
+                    val color = cursor.getString(colorIndex)
+                    responsible = Member(name = name, color = color)
+                } else {
+                    Log.e(Util.LOG_KEY, "error on reading column indexes on responsible fetch.\n(TodoDatabaseHelper)")
+                }
+            }
+        } catch(e: Exception) {
+            Log.e(Util.LOG_KEY, "reading database error on responsible fetch.\n(TodoDatabaseHelper)")
+        }
+        Log.i(Util.LOG_KEY,"retrieved data from todo database successfully on responsible fetch.\n(TodoDatabaseHelper)")
+        cursor.close()
+        return responsible
+    }
+
     private fun validIndexes(
         idIndex: Int,
         nameIndex: Int,

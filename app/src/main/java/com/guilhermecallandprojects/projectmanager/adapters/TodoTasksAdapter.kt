@@ -32,10 +32,9 @@ class TodoTasksAdapter(private var context: Context, private var todoTasks: Arra
         val task = todoTasks[position]
         holder.info.text = task.info
 
-        val responsibleQuery = memberDB.read(task.responsible?:"%")
-        if(responsibleQuery.isNotEmpty()){
+        val responsible = memberDB.fetchResponsible(task.responsible?: "")
+        if(responsible != null){
             holder.responsible.visibility = VISIBLE
-            val responsible = responsibleQuery[0]
             holder.responsible.text = task.responsible
             val color = Util.nameToColor(responsible.color)
             if(color!=null){ holder.responsible.setTextColor(getColor(context, color)) }

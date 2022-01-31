@@ -21,6 +21,7 @@ class MembersActivity : AppCompatActivity() {
     private lateinit var membersDB: MembersDatabaseHelper
     private lateinit var memberAdapter: MemberAdapter
 
+    private var oldMember: Member? = null
     private var editedMember: Member? = null
     private var currentColor: String? = "green"
 
@@ -55,11 +56,23 @@ class MembersActivity : AppCompatActivity() {
             var result: Long = 0
             if(isNewMember()){
                 val newMember = Member(name = currentName, color = currentColor)
-                result = membersDB.create(newMember)
+                val sameNameQuery: ArrayList<Member> = membersDB.read(currentName)
+                if(sameNameQuery.isEmpty()){
+                    result = membersDB.create(newMember)
+                }else{
+                    Toast.makeText(this, "This project already has a member with this name.", Toast.LENGTH_SHORT).show()
+                }
             }else{
                 editedMember?.name = currentName
                 editedMember?.color = currentColor
-                result = membersDB.update(editedMember!!)
+                val sameNameQuery: ArrayList<Member> = membersDB.read(currentName)
+                if(sameNameQuery.isEmpty() || currentName == oldMember?.name){
+                    //TODO: this not working
+                    Log.i("testing", "${ oldMember!!.name }")
+                    result = membersDB.update(editedMember!!)
+                }else{
+                    Toast.makeText(this, "This project already has a member with this name.", Toast.LENGTH_SHORT).show()
+                }
             }
 
             if (result > 0) {
@@ -122,6 +135,7 @@ class MembersActivity : AppCompatActivity() {
     }
 
     private fun setToEditMode(member: Member){
+        oldMember = member
         changeColor(member.color)
         editedMember = member
         tv_new_member_title.setText(R.string.activity_members_edit_title)
