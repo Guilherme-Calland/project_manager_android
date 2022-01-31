@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
+            "outputFile": "C:\\android_projects\\project_manager_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "/home/gui/.gradle/caches/transforms-3/8236bb30c7ffb72e8dbcbe6d32bd9204/transformed/appcompat-1.4.1/res/values-v25/values-v25.xml",
+                    "source": "C:\\Users\\LENOVO\\.gradle\\caches\\transforms-3\\8236bb30c7ffb72e8dbcbe6d32bd9204\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

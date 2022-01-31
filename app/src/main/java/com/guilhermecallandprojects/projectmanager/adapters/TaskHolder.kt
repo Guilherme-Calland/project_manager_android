@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.task.view.*
 
 class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     var info : TextView = itemView.tv_info
-    var responsible : TextView = itemView.tv_responsible
+    var responsible: TextView = itemView.tv_responsible_member
     var deleteButton : ImageView = itemView.iv_delete
     var editButton : ImageView = itemView.iv_edit
     var nextButton : ImageView = itemView.iv_throwNextCol

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/media/gui/SSD WINDOWS 10/linux_files/android_projects/project_manager_android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ca/values-ca.xml",
+            "outputFile": "C:\\android_projects\\project_manager_android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ca\\values-ca.xml",
             "map": [
                 {
-                    "source": "/home/gui/.gradle/caches/transforms-3/02dd113c17589cb1efa543789b004215/transformed/material-1.5.0/res/values-ca/values-ca.xml",
+                    "source": "C:\\Users\\LENOVO\\.gradle\\caches\\transforms-3\\02dd113c17589cb1efa543789b004215\\transformed\\material-1.5.0\\res\\values-ca\\values-ca.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/gui/.gradle/caches/transforms-3/8236bb30c7ffb72e8dbcbe6d32bd9204/transformed/appcompat-1.4.1/res/values-ca/values-ca.xml",
+                    "source": "C:\\Users\\LENOVO\\.gradle\\caches\\transforms-3\\8236bb30c7ffb72e8dbcbe6d32bd9204\\transformed\\appcompat-1.4.1\\res\\values-ca\\values-ca.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "/home/gui/.gradle/caches/transforms-3/3b16d604ecf1a3ba90b57bf493908e8e/transformed/core-1.7.0/res/values-ca/values-ca.xml",
+                    "source": "C:\\Users\\LENOVO\\.gradle\\caches\\transforms-3\\3b16d604ecf1a3ba90b57bf493908e8e\\transformed\\core-1.7.0\\res\\values-ca\\values-ca.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

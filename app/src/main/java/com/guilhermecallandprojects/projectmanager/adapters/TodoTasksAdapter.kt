@@ -1,22 +1,26 @@
 package com.guilhermecallandprojects.projectmanager.adapters
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
+import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
 
-class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
+class TodoTasksAdapter(private var context: Context, private var todoTasks: ArrayList<Task>) :
     RecyclerView.Adapter<TaskHolder>() {
     private var holderList: ArrayList<TaskHolder> = ArrayList()
     private var onPressedObject: OnPressedInterface? = null
+    private val memberDB = MembersDatabaseHelper(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.task, parent, false)
@@ -25,13 +29,16 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
         holderList.add(holder)
-
         val task = todoTasks[position]
         holder.info.text = task.info
-        if(task.responsible == ""){
-            holder.responsible.visibility = View.GONE
-        }else{
+
+        val responsibleQuery = memberDB.read(task.responsible?:"%")
+        if(responsibleQuery.isNotEmpty()){
+            holder.responsible.visibility = VISIBLE
+            val responsible = responsibleQuery[0]
             holder.responsible.text = task.responsible
+            val color = Util.nameToColor(responsible.color)
+            if(color!=null){ holder.responsible.setTextColor(getColor(context, color)) }
         }
 
         holder.deleteButton.setOnClickListener { onPressedObject?.onDelete(position, task) }
@@ -52,7 +59,7 @@ class TodoTasksAdapter(private var todoTasks: ArrayList<Task>) :
         }
     }
 
-    private fun resetIconViews(holder: TaskHolder) {
+    fun resetIconViews(holder: TaskHolder? = null) {
         for (h in holderList) {
             if (h != holder) {
                 h.iconsRow.visibility = GONE

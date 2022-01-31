@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeTodoList() {
         todoTasks = ArrayList()
-        todoTasksAdapter = TodoTasksAdapter(todoTasks)
+        todoTasksAdapter = TodoTasksAdapter(this, todoTasks)
         rv_todo_list.adapter = todoTasksAdapter
         todoTasksAdapter.setOnPressedObject(OnPressedConcreteClass())
         todoDB = TodoDatabaseHelper(this)
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         readFromDatabase()
+        todoTasksAdapter.resetIconViews()
         super.onResume()
     }
 

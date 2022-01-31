@@ -1,20 +1,33 @@
 <resources>
     <string name="app_name">ProjectManager</string>
-    <string name="new_task_message">New Task</string>
-    <string name="add_hint">Add new task here</string>
-    <string name="member_hint">Responsible member</string>
-    <string name="add_button_text">Add</string>
-    <string name="responsible_members_top">Responsible:</string>
-    <string name="menu_add_title">Add</string>
-    <string name="menu_search_title">Search</string>
-    <string name="members_title">Members:</string>
-    <string name="add_new_member_title">Add new member:</string>
-    <string name="hint_name">Name</string>
-    <string name="add_new_member_text">Add</string>
-    <string name="task_information_for_debug">this is where the task information goes</string>
-    <string name="responsible_for_debug">this is where the responsible goes</string>
-    <string name="todo_title">To do:</string>
-    <string name="doing_title">Doing:</string>
-    <string name="done_title">Done:</string>
+
+    <!--    buttons-->
+    <string name="button_add">Add</string>
+    <string name="button_back">Back</string>
+    <string name="button_done">Done</string>
+    <string name="button_cancel">Cancel</string>
+
+    <!--    activity add task-->
+    <string name="activity_add_task_new_task_title">New Task</string>
+    <string name="activity_add_task_edit_task_title">Edit Task</string>
+    <string name="activity_add_task_hint">Add new task here</string>
+    <string name="activity_add_task_responsible_title">Responsible:</string>
+
+    <!--    activity members-->
+    <string name="activity_members_members_title">Members</string>
+    <string name="activity_members_add_title">Add new member</string>
+    <string name="activity_members_edit_title">Edit member</string>
+    <string name="activity_members_hint">Name</string>
+
+    <!--        symbols-->
+    <string name="symbol_add">+</string>
+    <string name="symbol_remove">-</string>
+
+    <string name="todo_title">To do</string>
+    <string name="doing_title">Doing</string>
+    <string name="done_title">Done</string>
     <string name="cancel_edit_member_text">Cancel</string>
+    <string name="add_task_cancel">Cancel</string>
+    <string name="choose_member_text">Choose Responsible</string>
+    <string name="member_name">this is where the name goes</string>
 </resources>

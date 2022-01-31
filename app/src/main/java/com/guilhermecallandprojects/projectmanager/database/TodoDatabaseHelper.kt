@@ -70,16 +70,17 @@ class TodoDatabaseHelper(context: Context) :
         return taskList
     }
 
-    fun update(task: Task): Long{
+    fun update(task: Task):  Long{
         val values = ContentValues()
         values.put(columnInfo, task.info)
         values.put(columnResponsible, task.responsible)
-        val result = writableDatabase.update(tableTodo, values,"$columnID=${task.id}", null).toLong()
+        val result = this.writableDatabase.update(tableTodo, values,"$columnID=${task.id}", null).toLong()
+        Log.i("testing", "$result")
         return result
     }
 
     fun delete(id: Int) : Int{
-        val result = writableDatabase.delete(tableTodo, "$columnID=$id", null)
+        val result = this.writableDatabase.delete(tableTodo, "$columnID=$id", null)
         return result
     }
 

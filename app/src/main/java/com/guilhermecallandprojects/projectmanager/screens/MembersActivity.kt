@@ -14,15 +14,15 @@ import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelpe
 import com.guilhermecallandprojects.projectmanager.model.Member
 import com.guilhermecallandprojects.projectmanager.utils.Util
 import kotlinx.android.synthetic.main.activity_members.*
+import kotlinx.android.synthetic.main.task.*
 
 class MembersActivity : AppCompatActivity() {
     private lateinit var membersList: ArrayList<Member>
     private lateinit var membersDB: MembersDatabaseHelper
     private lateinit var memberAdapter: MemberAdapter
 
-    private var currentColor: String = "green"
     private var editedMember: Member? = null
-
+    private var currentColor: String? = "green"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,36 +36,29 @@ class MembersActivity : AppCompatActivity() {
     private fun setButtonListeners() {
         btn_add_h.setOnClickListener { addMember() }
         btn_add.setOnClickListener { addMember() }
-        btn_back.setOnClickListener { resetLayout() }
-        btn_cancel_h.setOnClickListener {
-            setToAddMode()
-            resetLayout()
-        }
-        btn_cancel.setOnClickListener { setToAddMode() }
+        arrow_back.setOnClickListener { resetLayout() }
+        btn_back_h.setOnClickListener { finish() }
     }
 
     private fun setToAddMode() {
-        tv_new_member_title.setText("Add new member:")
-        btn_add.setText("Add")
-        btn_add_h.setText("Add")
-        btn_cancel.visibility = GONE
-        btn_add_h.visibility = GONE
+        tv_new_member_title.setText(R.string.activity_members_add_title)
+        btn_add.setText(R.string.button_add)
+        btn_add_h.setText(R.string.button_done)
+        arrow_back.visibility = GONE
         et_member_name.text.clear()
         editedMember = null
-        memberAdapter.resetIconViews()
     }
 
     private fun addMember() {
         if (!blankName()) {
             val currentName: String = et_member_name.text.toString()
             var result: Long = 0
-
             if(isNewMember()){
                 val newMember = Member(name = currentName, color = currentColor)
                 result = membersDB.create(newMember)
             }else{
-                editedMember!!.name = currentName
-                editedMember!!.color = currentColor
+                editedMember?.name = currentName
+                editedMember?.color = currentColor
                 result = membersDB.update(editedMember!!)
             }
 
@@ -74,13 +67,20 @@ class MembersActivity : AppCompatActivity() {
                     Log.i(Util.LOG_KEY, "insert into members database successful.\n(MembersActivity)")
                     Toast.makeText(this, "$currentName was added as a member.", Toast.LENGTH_SHORT)
                         .show()
+                    et_member_name.text.clear()
                 }else{
                     Log.i(Util.LOG_KEY, "updated member successful.\n(MembersActivity)")
+                    resetLayout()
+                    setToAddMode()
                 }
-                setToAddMode()
                 readFromDatabase()
             } else {
-                Log.e(Util.LOG_KEY, "failure in adding member to database.\n(MembersActivity)")
+                if(isNewMember()) {
+                    Log.e(Util.LOG_KEY, "failure in adding member to database.\n(MembersActivity)")
+                }else{
+                    Log.e(Util.LOG_KEY, "failure in editing member to database.\n(MembersActivity)")
+
+                }
             }
         } else {
             Toast.makeText(this, "Please insert a name.", Toast.LENGTH_SHORT).show()
@@ -93,15 +93,9 @@ class MembersActivity : AppCompatActivity() {
 
     private fun setNameEditTextListeners() {
         Util.disableFullscreen(editText = et_member_name)
-
-        et_member_name.setOnClickListener{
-            ajustLayoutForTextInput()
-        }
-
+        et_member_name.setOnClickListener{ ajustLayoutForTextInput() }
         et_member_name.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                ajustLayoutForTextInput()
-            }
+            if (hasFocus) { ajustLayoutForTextInput() }
         }
     }
 
@@ -109,7 +103,7 @@ class MembersActivity : AppCompatActivity() {
         ll_membersList.visibility = GONE
         ll_buttons_v.visibility = GONE
         ll_buttons_h.visibility = VISIBLE
-        btn_back.visibility = VISIBLE
+        arrow_back.visibility = VISIBLE
         ll_members_activity.gravity = Gravity.CENTER_HORIZONTAL
         tv_new_member_title.visibility = GONE
     }
@@ -119,22 +113,21 @@ class MembersActivity : AppCompatActivity() {
             deleteMember(model)
             readFromDatabase()
             memberAdapter.resetIconViews()
+            showMembersIfNotEmpty()
         }
 
         override fun onEdit(position: Int, member: Member) {
             setToEditMode(member)
-
         }
     }
 
     private fun setToEditMode(member: Member){
         changeColor(member.color)
         editedMember = member
-        tv_new_member_title.setText("Edit member:")
-        btn_add.setText("Done")
-        btn_add_h.setText("Done")
-        btn_cancel.visibility = VISIBLE
-        btn_cancel_h.visibility = VISIBLE
+        tv_new_member_title.setText(R.string.activity_members_edit_title)
+        btn_add.setText(R.string.button_done)
+        btn_add_h.setText(R.string.button_done)
+        btn_back_h.visibility = VISIBLE
         et_member_name.setText(member.name)
         memberAdapter.resetIconViews()
     }
@@ -162,6 +155,15 @@ class MembersActivity : AppCompatActivity() {
         rv_members_list.adapter = memberAdapter
         memberAdapter.setOnPressedObject( OnPressedConcreteClass() )
         readFromDatabase()
+        showMembersIfNotEmpty()
+    }
+
+    private fun showMembersIfNotEmpty() {
+        if (membersList.isNotEmpty()) {
+            ll_membersList.visibility = VISIBLE
+        } else {
+            ll_membersList.visibility = GONE
+        }
     }
 
     private fun readFromDatabase() {
@@ -193,7 +195,7 @@ class MembersActivity : AppCompatActivity() {
         switchViewVisibility(c_orange_chosen, c_orange_unchosen)
     }
 
-    private fun changeColor(color: String) {
+    private fun changeColor(color: String?) {
         resetColors()
         currentColor = color
         when(color){
@@ -215,15 +217,18 @@ class MembersActivity : AppCompatActivity() {
         ll_buttons_v.visibility = VISIBLE
         tv_new_member_title.visibility = VISIBLE
         ll_buttons_h.visibility = GONE
-        btn_back.visibility = GONE
+        arrow_back.visibility = GONE
         ll_members_activity.gravity = Gravity.CENTER
-        hideKeyboard()
         memberAdapter.resetIconViews()
+        showMembersIfNotEmpty()
+        hideKeyboard()
     }
 
     private fun hideKeyboard(){
-        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        if(currentFocus != null){
+            val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
     }
 
     private fun blankName() = et_member_name.text.isNullOrEmpty()

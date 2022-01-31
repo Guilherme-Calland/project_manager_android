@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.model.Member
 import com.guilhermecallandprojects.projectmanager.model.Task
+import com.guilhermecallandprojects.projectmanager.utils.Util
 
 class MemberAdapter(private var context: Context, private var members: ArrayList<Member>)
     : RecyclerView.Adapter<MemberHolder>(){
 
-    var holderList: ArrayList<MemberHolder> = ArrayList()
+    private var holderList: ArrayList<MemberHolder> = ArrayList()
     private var onPressedObject: OnPressedInterface? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberHolder {
@@ -29,24 +30,20 @@ class MemberAdapter(private var context: Context, private var members: ArrayList
     override fun onBindViewHolder(holder: MemberHolder, position: Int) {
         holderList.add(holder)
         val member = members[position]
-        holder.name.text = member.name
-        var color: Int = R.color.white
-        when(member.color){
-            "blue" -> color = R.color.light_blue
-            "red" -> color = R.color.light_red
-            "green" -> color = R.color.light_green
-            "purple" -> color = R.color.light_purple
-            "orange" -> color = R.color.light_orange
-        }
-        holder.name.setTextColor(getColor(context,color))
+        setHolderViews(holder, member)
+        holder.memberElement.setOnClickListener { toggleIconsVisibility(holder) }
+        holder.deleteButton.setOnClickListener { onPressedObject?.onDelete(position, member) }
+        holder.editButton.setOnClickListener { onPressedObject?.onEdit(position, member) }
+    }
 
-        holder.member.setOnClickListener { toggleIconsVisibility(holder) }
-        holder.deleteButton.setOnClickListener {
-            onPressedObject?.onDelete(position, member)
-        }
-
-        holder.editButton.setOnClickListener {
-            onPressedObject?.onEdit(position, member)
+    private fun setHolderViews(
+        holder: MemberHolder,
+        member: Member
+    ) {
+        holder.memberName.text = member.name
+        val color = Util.nameToColor(member.color)
+        if (color != null) {
+            holder.memberName.setTextColor(getColor(context, color))
         }
     }
 
@@ -65,7 +62,7 @@ class MemberAdapter(private var context: Context, private var members: ArrayList
 
     fun resetIconViews(holder: MemberHolder? = null) {
         for (h in holderList) {
-            if (h != holder) {
+            if(h != holder){
                 h.iconRow.visibility = GONE
             }
         }

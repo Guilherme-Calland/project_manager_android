@@ -19,7 +19,7 @@ class MembersDatabaseHelper(context: Context)
     private val columnColor: String = "member_color"
 
     override fun onCreate(db: SQLiteDatabase) {
-//        db.execSQL("""CREATE TABLE IF NOT EXISTS $tableMembers ($columnID INTEGER PRIMARY KEY, $columnName TEXT, $columnColor TEXT)""")
+        db.execSQL("""CREATE TABLE IF NOT EXISTS $tableMembers ($columnID INTEGER PRIMARY KEY, $columnName TEXT, $columnColor TEXT)""")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
@@ -36,9 +36,9 @@ class MembersDatabaseHelper(context: Context)
         return result
     }
 
-    fun read() : ArrayList<Member>{
+    fun read(queryArg: String = "%") : ArrayList<Member>{
         val membersList = ArrayList<Member>()
-        val query = """SELECT * FROM $tableMembers"""
+        val query =  """SELECT * FROM $tableMembers WHERE $columnName LIKE '%$queryArg%'"""
         val db = this.readableDatabase
         val cursor : Cursor = db.rawQuery(query, null)
         try {
@@ -72,6 +72,7 @@ class MembersDatabaseHelper(context: Context)
         values.put(columnName, member.name)
         values.put(columnColor, member.color)
         val result = writableDatabase.update(tableMembers, values, "$columnID=${member.id}", null).toLong()
+        Log.i("testing", "$result")
         return result
     }
 

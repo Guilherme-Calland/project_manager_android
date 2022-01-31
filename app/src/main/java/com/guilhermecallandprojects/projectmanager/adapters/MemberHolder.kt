@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.member.view.*
 
 class MemberHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var member: LinearLayout = itemView.ll_member
+    var memberElement: LinearLayout = itemView.ll_member_element
+    var memberName: TextView = itemView.tv_member_name
+    var removeElement: TextView = itemView.tv_remove_element
     var iconRow: LinearLayout = itemView.ll_icons
-    var name: TextView = itemView.tv_name
     var deleteButton: ImageView = itemView.iv_delete
     var editButton: ImageView = itemView.iv_edit
 }
