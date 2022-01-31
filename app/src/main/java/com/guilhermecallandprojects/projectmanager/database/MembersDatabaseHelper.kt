@@ -81,7 +81,7 @@ class MembersDatabaseHelper(context: Context)
         return result
     }
 
-    fun fetchResponsible(queryArg: String) : Member?{
+    fun fetchMember(queryArg: String) : Member?{
         var responsible: Member? = null
         val query =
             """SELECT * FROM $tableMembers WHERE $columnName LIKE '$queryArg' OR $columnColor LIKE '$queryArg'"""

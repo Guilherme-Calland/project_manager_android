@@ -55,20 +55,18 @@ class MembersActivity : AppCompatActivity() {
             val currentName: String = et_member_name.text.toString()
             var result: Long = 0
             if(isNewMember()){
-                val newMember = Member(name = currentName, color = currentColor)
-                val sameNameQuery: ArrayList<Member> = membersDB.read(currentName)
-                if(sameNameQuery.isEmpty()){
+                val queryMember: Member? = membersDB.fetchMember(currentName)
+                if(doesntExist(queryMember)){
+                    val newMember = Member(name = currentName, color = currentColor)
                     result = membersDB.create(newMember)
                 }else{
                     Toast.makeText(this, "This project already has a member with this name.", Toast.LENGTH_SHORT).show()
                 }
             }else{
-                editedMember?.name = currentName
-                editedMember?.color = currentColor
-                val sameNameQuery: ArrayList<Member> = membersDB.read(currentName)
-                if(sameNameQuery.isEmpty() || currentName == oldMember?.name){
-                    //TODO: this not working
-                    Log.i("testing", "${ oldMember!!.name }")
+                val queryMember: Member? = membersDB.fetchMember(currentName)
+                if(doesntExist(queryMember) || didntChangeName(currentName)){
+                    editedMember?.name = currentName
+                    editedMember?.color = currentColor
                     result = membersDB.update(editedMember!!)
                 }else{
                     Toast.makeText(this, "This project already has a member with this name.", Toast.LENGTH_SHORT).show()
@@ -101,8 +99,13 @@ class MembersActivity : AppCompatActivity() {
         memberAdapter.resetIconViews()
     }
 
+    private fun didntChangeName(currentName: String) = currentName == oldMember?.name
+
 
     private fun isNewMember() = editedMember == null
+
+    private fun doesntExist(queryMember: Member?) =
+        queryMember == null
 
     private fun setNameEditTextListeners() {
         Util.disableFullscreen(editText = et_member_name)

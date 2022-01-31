@@ -32,7 +32,7 @@ class TodoTasksAdapter(private var context: Context, private var todoTasks: Arra
         val task = todoTasks[position]
         holder.info.text = task.info
 
-        val responsible = memberDB.fetchResponsible(task.responsible?: "")
+        val responsible = memberDB.fetchMember(task.responsible?: "")
         if(responsible != null){
             holder.responsible.visibility = VISIBLE
             holder.responsible.text = task.responsible
