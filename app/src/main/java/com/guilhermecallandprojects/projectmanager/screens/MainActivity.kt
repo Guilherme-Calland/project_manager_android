@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.SearchView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.TaskAdapter
+import com.guilhermecallandprojects.projectmanager.database.DatabaseBrain as dbb
 import com.guilhermecallandprojects.projectmanager.database.TaskDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
@@ -60,9 +61,9 @@ class MainActivity : AppCompatActivity() {
         rv_done.adapter = doneAdapter
 
         //databases
-        todoDB  = TaskDatabaseHelper(this, "todo_database")
-        doingDB = TaskDatabaseHelper(this, "doing_database")
-        doneDB  = TaskDatabaseHelper(this, "done_database")
+        todoDB  = TaskDatabaseHelper(this, dbb.TODO_DATABASE_NAME)
+        doingDB = TaskDatabaseHelper(this, dbb.DOING_DATABASE_NAME)
+        doneDB  = TaskDatabaseHelper(this, dbb.DONE_DATABASE)
         readFromDatabase()
     }
 

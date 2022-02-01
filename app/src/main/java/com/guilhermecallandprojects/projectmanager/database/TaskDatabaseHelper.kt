@@ -16,7 +16,7 @@ class TaskDatabaseHelper(context: Context, dbName: String) :
     private val tableTasks: String = "task_table"
     private val columnID: String = "task_id"
     private val columnInfo: String = "task_info"
-    private val columnResponsible: String = "tas_responsible_member"
+    private val columnResponsible: String = "task_responsible_member"
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""CREATE TABLE IF NOT EXISTS $tableTasks ($columnID INTEGER PRIMARY KEY, $columnInfo TEXT, $columnResponsible TEXT)""")
@@ -38,10 +38,10 @@ class TaskDatabaseHelper(context: Context, dbName: String) :
     }
 
     fun read(queryArg: String = "%") : ArrayList<Task>{
+        val db = this.readableDatabase
         val taskList = ArrayList<Task>()
         val query =
             """SELECT * FROM $tableTasks WHERE $columnInfo LIKE '%$queryArg%' OR $columnResponsible LIKE '%$queryArg%'"""
-        val db = this.readableDatabase
         val cursor : Cursor = db.rawQuery(query, null)
         try{
             if (cursor.moveToFirst()) {

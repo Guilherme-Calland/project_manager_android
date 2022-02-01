@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.ResponsibleMemberAdapter
+import com.guilhermecallandprojects.projectmanager.database.DatabaseBrain as dbb
 import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.database.TaskDatabaseHelper
 import com.guilhermecallandprojects.projectmanager.model.Member
@@ -40,7 +41,7 @@ class AddTaskActivity : AppCompatActivity() {
         setButtonListeners()
         retrieveBundle()
         setTaskEditTextListeners()
-        todoDB = TaskDatabaseHelper(this)
+        todoDB = TaskDatabaseHelper(this, dbb.TODO_DATABASE_NAME)
         initializeMembersList()
     }
 
