@@ -9,7 +9,6 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelper
@@ -34,8 +33,6 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
         holder.info.text = task.info
 
         val responsible = memberDB.fetchMember(task.responsible?: "")
-        //TODO: apaga isso
-        Log.i("testing", "${responsible}")
         if(responsible != null){
             holder.responsible.visibility = VISIBLE
             holder.responsible.text = task.responsible
@@ -47,11 +44,16 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
 
         if(task.id!= null){
             holder.deleteButton.setOnClickListener { onPressedObject?.onDelete(task.id, adapterID) }
-        } else {
-            Log.e("projectmanagerapp", "A null id was passed for deletion.")
         }
+
+        when(adapterID){
+            AdapterBrain.TODO_ADAPTER_ID -> holder.prevButton.visibility = GONE
+            AdapterBrain.DONE_ADAPTER_ID -> holder.nextButton.visibility = GONE
+        }
+
         holder.editButton.setOnClickListener { onPressedObject?.onEdit(task, adapterID) }
         holder.nextButton.setOnClickListener{ onPressedObject?.onNext(task, adapterID) }
+        holder.prevButton.setOnClickListener { onPressedObject?.onPrevious(task, adapterID) }
         holder.task.setOnClickListener { toggleIconsVisibility(holder) }
     }
 
@@ -84,6 +86,7 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
         fun onDelete(taskID: Int, adapterID: Int)
         fun onEdit(task: Task, adapterID: Int)
         fun onNext(task: Task, adapterID: Int)
+        fun onPrevious(task: Task, adapterID: Int)
     }
 
     fun setOnPressedObject(onPressedObject: OnPressedInterface) {

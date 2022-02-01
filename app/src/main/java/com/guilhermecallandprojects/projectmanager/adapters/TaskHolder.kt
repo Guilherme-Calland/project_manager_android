@@ -14,6 +14,7 @@ class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     var responsible: TextView = itemView.tv_responsible_member
     var deleteButton : ImageView = itemView.iv_delete
     var editButton : ImageView = itemView.iv_edit
+    var prevButton: ImageView = itemView.iv_throwPrevCol
     var nextButton : ImageView = itemView.iv_throwNextCol
     var task: LinearLayout = itemView.ll_task
     var iconsRow: LinearLayout = itemView.ll_icons

@@ -16,7 +16,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-<!--back arrow-->
+        <!--back arrow-->
         <ImageView
             android:id="@+id/arrow_back"
             android:layout_width="wrap_content"
@@ -29,58 +29,14 @@
             android:textColor="@color/white"
             android:visibility="gone" />
 
-<!--new task-->
-        <LinearLayout
-            android:layout_width="250sp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/item_background_dark"
-            android:orientation="vertical"
-            android:paddingVertical="16sp"
-            android:layout_marginHorizontal="4sp"
-            >
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16sp"
-                android:layout_marginBottom="8sp"
-                android:text="@string/activity_add_task_new_task_title"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-            <EditText
-                android:id="@+id/et_task"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8sp"
-                android:background="@drawable/item_background"
-                android:gravity="start"
-                android:hint="@string/activity_add_task_hint"
-                android:lines="2"
-                android:paddingHorizontal="10sp"
-                android:paddingVertical="8sp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/light_gray" />
-            <TextView
-                android:id="@+id/btn_add"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="8sp"
-                android:layout_marginTop="16sp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:paddingVertical="12sp"
-                android:text="@string/button_add"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-<!--responsible-->
+    <!--responsible-->
         <LinearLayout
             android:id="@+id/ll_responsible"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4sp"
             android:gravity="center">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,6 +44,7 @@
                 android:orientation="vertical"
                 android:paddingTop="16sp"
                 android:paddingBottom="16sp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,18 +70,18 @@
             </LinearLayout>
         </LinearLayout>
 
-<!--member list-->
+        <!--member list-->
         <LinearLayout
             android:id="@+id/ll_responsible_list"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4sp"
             android:background="@drawable/item_background_dark"
             android:orientation="vertical"
             android:paddingTop="10sp"
             android:paddingBottom="8sp"
-            android:visibility="gone"
-            android:layout_marginHorizontal="4sp"
-            >
+            android:visibility="gone">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_responsible_list"
                 android:layout_width="match_parent"
@@ -132,7 +89,54 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
 
-<!--buttons for edit text mode-->
+        <!--new task-->
+        <LinearLayout
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4sp"
+            android:background="@drawable/item_background_dark"
+            android:orientation="vertical"
+            android:paddingVertical="16sp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:layout_marginBottom="8sp"
+                android:text="@string/activity_add_task_new_task_title"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/et_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8sp"
+                android:background="@drawable/item_background"
+                android:gravity="start"
+                android:hint="@string/activity_add_task_hint"
+                android:lines="2"
+                android:paddingHorizontal="10sp"
+                android:paddingVertical="8sp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="8sp"
+                android:layout_marginTop="16sp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:paddingVertical="12sp"
+                android:text="@string/button_add"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <!--buttons for edit text mode-->
         <LinearLayout
             android:id="@+id/ll_buttons_h"
             android:layout_width="wrap_content"
@@ -140,6 +144,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone">
+
             <TextView
                 android:id="@+id/btn_add_h"
                 android:layout_width="120sp"
@@ -151,8 +156,8 @@
                 android:text="@string/button_add"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-            />
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/btn_back_h"
                 android:layout_width="120sp"
@@ -164,8 +169,7 @@
                 android:text="@string/button_back"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                 />
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

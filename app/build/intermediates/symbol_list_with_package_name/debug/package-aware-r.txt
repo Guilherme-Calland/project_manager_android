@@ -2798,6 +2798,7 @@ id item_touch_helper_previous_elevation
 id iv_delete
 id iv_edit
 id iv_throwNextCol
+id iv_throwPrevCol
 id jumpToEnd
 id jumpToStart
 id labeled

@@ -38,11 +38,18 @@
         android:visibility="gone"
         >
         <ImageView
+            android:id="@+id/iv_throwPrevCol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_backward_white"
+            android:layout_marginRight="8sp"
+            />
+        <ImageView
             android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/outline_delete_white_24dp"
-            android:layout_marginRight="6sp"
+            android:layout_marginRight="8sp"
             />
 
         <ImageView
@@ -50,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/outline_mode_edit_white_24dp"
-            android:layout_marginRight="6sp"
+            android:layout_marginRight="8sp"
             />
 
         <ImageView

@@ -109,8 +109,29 @@ class MainActivity : AppCompatActivity() {
                     readFromDatabase(adapterID = ab.DONE_ADAPTER_ID)
                 }
             }
+
             if(result < 1){
-                Log.e("projectmanagerapp", "problem on switching databases on onNext method.\n(MainActivity)")
+                Log.e(Util.LOG_KEY, "problem on switching databases on onNext method.\n(MainActivity)")
+            }
+        }
+
+        override fun onPrevious(task: Task, adapterID: Int){
+            var result : Long = 0
+            when(adapterID){
+                ab.DOING_ADAPTER_ID -> {
+                    deleteTask(task.id, ab.DOING_ADAPTER_ID, doingDB)
+                    result = todoDB.create(Task(info = task.info, responsible = task.responsible))
+                    readFromDatabase(adapterID = ab.TODO_ADAPTER_ID)
+                }
+                ab.DONE_ADAPTER_ID -> {
+                    deleteTask(task.id, ab.DONE_ADAPTER_ID, doneDB)
+                    result = doingDB.create(Task(info = task.info, responsible = task.responsible))
+                    readFromDatabase(adapterID = ab.DOING_ADAPTER_ID)
+                }
+            }
+
+            if(result < 1){
+                Log.e(Util.LOG_KEY, "problem on switching databases on onPrevious method.\n(MainActivity)")
             }
         }
     }
