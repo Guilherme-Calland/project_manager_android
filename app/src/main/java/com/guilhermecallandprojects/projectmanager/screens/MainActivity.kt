@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import com.guilhermecallandprojects.projectmanager.R
+import com.guilhermecallandprojects.projectmanager.adapters.AdapterBrain as ab
 import com.guilhermecallandprojects.projectmanager.adapters.TaskAdapter
 import com.guilhermecallandprojects.projectmanager.database.DatabaseBrain as dbb
 import com.guilhermecallandprojects.projectmanager.database.TaskDatabaseHelper
@@ -48,22 +49,22 @@ class MainActivity : AppCompatActivity() {
         doneTasks  = ArrayList()
 
         //adapters
-        todoAdapter  = TaskAdapter(this, todoTasks)
+        todoAdapter  = TaskAdapter(this, todoTasks, ab.TODO_ADAPTER_ID)
         todoAdapter.setOnPressedObject( OnPressedConcreteClass() )
         rv_todo.adapter = todoAdapter
 
-        doingAdapter = TaskAdapter(this, doingTasks)
+        doingAdapter = TaskAdapter(this, doingTasks, ab.DOING_ADAPTER_ID)
         doingAdapter.setOnPressedObject( OnPressedConcreteClass() )
         rv_doing.adapter = doingAdapter
 
-        doneAdapter  = TaskAdapter(this, doneTasks)
+        doneAdapter  = TaskAdapter(this, doneTasks, ab.DONE_ADAPTER_ID)
         doingAdapter.setOnPressedObject( OnPressedConcreteClass() )
         rv_done.adapter = doneAdapter
 
         //databases
         todoDB  = TaskDatabaseHelper(this, dbb.TODO_DATABASE_NAME)
         doingDB = TaskDatabaseHelper(this, dbb.DOING_DATABASE_NAME)
-        doneDB  = TaskDatabaseHelper(this, dbb.DONE_DATABASE)
+        doneDB  = TaskDatabaseHelper(this, dbb.DONE_DATABASE_NAME)
         readFromDatabase()
     }
 
@@ -74,33 +75,77 @@ class MainActivity : AppCompatActivity() {
     }
 
     inner class OnPressedConcreteClass : TaskAdapter.OnPressedInterface{
-        override fun onDelete(position: Int, model: Task){
-            deleteTask(model)
-            readFromDatabase()
-        }
-
-        override fun onEdit(position: Int, model: Task) {
-            goToAddTask(model)
-            readFromDatabase()
-        }
-    }
-
-    private fun deleteTask(model: Task) {
-        if (model.id != null) {
-            val result: Int = todoDB.delete(model.id)
-            if (result > 0) {
-                Log.i(Util.LOG_KEY, "element was deleted successfully!\n(MainActivity)")
-            } else {
-                Log.e(Util.LOG_KEY, "error on deleting the element.\n(MainActivity)")
+        override fun onDelete(taskID: Int, adapterID: Int){
+            val db: TaskDatabaseHelper? = when(adapterID) {
+                ab.TODO_ADAPTER_ID -> todoDB
+                ab.DOING_ADAPTER_ID -> doingDB
+                ab.DONE_ADAPTER_ID -> doneDB
+                else -> null
             }
-        } else {
-            Log.e(Util.LOG_KEY, "was passed a null id for deletion.\n(MainActivity)")
+            if(db!=null){
+                deleteTask(taskID, db)
+            } else {
+                Log.e("projectmanagerapp", "null database was passed to delete item.\n(MainActivity)")
+            }
+            readFromDatabase(adapterID = adapterID)
+        }
+
+        override fun onEdit(model: Task, adapterID: Int) {
+            goToAddTask(model, adapterID)
+            readFromDatabase(adapterID = adapterID)
+        }
+
+        override fun onNext(task: Task, adapterID: Int) {
+            when(adapterID){
+                //TODO: delete item and create in next database
+            }
         }
     }
 
-    private fun readFromDatabase(query: String = "%") {
-        reloadLists(query)
-        notifyAdapters()
+    private fun deleteTask(taskID: Int, db: TaskDatabaseHelper) {
+        val result: Int = db.delete(taskID)
+        if (result > 0) {
+            Log.i(Util.LOG_KEY, "element was deleted successfully!\n(MainActivity)")
+            readFromDatabase()
+        } else {
+            Log.e(Util.LOG_KEY, "error on deleting the element.\n(MainActivity)")
+        }
+    }
+
+    private fun readFromDatabase(query: String = "%", adapterID: Int? = null) {
+        if(readingForAll(adapterID)){
+            reloadLists(query)
+            notifyAdapters()
+        }else{
+            reloadList(query, adapterID!!)
+        }
+    }
+
+    private fun readingForAll(adapterID: Int?) = adapterID == null
+
+    private fun reloadList(query: String, adapterID: Int){
+        when(adapterID){
+            ab.TODO_ADAPTER_ID -> {
+                todoTasks.clear()
+                val tasksTemp = todoDB.read(query)
+                for (t in tasksTemp) { todoTasks.add(t) }
+                todoAdapter.notifyDataSetChanged()
+            }
+
+            ab.DOING_ADAPTER_ID -> {
+                doingTasks.clear()
+                val tasksTemp = doingDB.read(query)
+                for(t in tasksTemp){ doingTasks.add(t) }
+                todoAdapter.notifyDataSetChanged()
+            }
+
+            ab.DONE_ADAPTER_ID -> {
+                doneTasks.clear()
+                val tasksTemp = doingDB.read(query)
+                for(t in tasksTemp){ doneTasks.add(t) }
+                todoAdapter.notifyDataSetChanged()
+            }
+        }
     }
 
     private fun reloadLists(query: String) {
@@ -164,17 +209,29 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun goToAddTask(task: Task? = null) {
+    private fun goToAddTask(task: Task? = null, adapterID: Int?=null) {
         val intent = Intent(this, AddTaskActivity::class.java)
 
-        if(task!=null){
-            intent.putExtra("id", task.id)
+        if(editingTask(task, adapterID)){
+            intent.putExtra("id", task!!.id)
             intent.putExtra("info", task.info)
             intent.putExtra("responsible", task.responsible)
+            val databaseName: String? = when(adapterID){
+                ab.TODO_ADAPTER_ID -> dbb.TODO_DATABASE_NAME
+                ab.DOING_ADAPTER_ID -> dbb.DOING_DATABASE_NAME
+                ab.DONE_ADAPTER_ID -> dbb.DONE_DATABASE_NAME
+                else -> null
+            }
+            intent.putExtra("databaseName", databaseName)
         }
-
+        
         startActivity(intent)
     }
+
+    private fun editingTask(
+        task: Task?,
+        adapterID: Int?
+    ) = task != null && adapterID != null
 
     private fun goToMembers(){
         val intent = Intent(this, MembersActivity::class.java)

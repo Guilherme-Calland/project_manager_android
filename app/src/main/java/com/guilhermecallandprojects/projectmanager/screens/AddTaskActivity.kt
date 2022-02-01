@@ -26,10 +26,11 @@ class AddTaskActivity : AppCompatActivity() {
     private var idFromBundle: Int? = null
     private var infoFromBundle: String? = null
     private var responsibleFromBundle: String? = null
+    private var databaseNameFromBundle: String? = null
 
     private var currentResponsible: String ?= null
 
-    private lateinit var todoDB: TaskDatabaseHelper
+    private lateinit var taskDB: TaskDatabaseHelper
     private lateinit var membersDB: MembersDatabaseHelper
     private lateinit var memberList: ArrayList<Member>
     private lateinit var responsibleMemberAdapter: ResponsibleMemberAdapter
@@ -41,7 +42,6 @@ class AddTaskActivity : AppCompatActivity() {
         setButtonListeners()
         retrieveBundle()
         setTaskEditTextListeners()
-        todoDB = TaskDatabaseHelper(this, dbb.TODO_DATABASE_NAME)
         initializeMembersList()
     }
 
@@ -127,6 +127,8 @@ class AddTaskActivity : AppCompatActivity() {
             idFromBundle = bundle.getInt("id")
             infoFromBundle = bundle.getString("info")
             responsibleFromBundle = bundle.getString("responsible")
+            databaseNameFromBundle = bundle.getString("databaseName")
+            taskDB = TaskDatabaseHelper(this, databaseNameFromBundle ?: dbb.TODO_DATABASE_NAME)
             et_task.setText(infoFromBundle)
         }
     }
@@ -164,7 +166,7 @@ class AddTaskActivity : AppCompatActivity() {
             var result: Long = 0
             if (addingTask()) {
                 val newTask = Task(info = info, responsible = currentResponsible ?: "")
-                result = todoDB.create(newTask)
+                result = taskDB.create(newTask)
                 if (result > 0) {
                     Log.i(Util.LOG_KEY, "added to database successfully.\n(AddTaskActivity)")
                     Toast.makeText(this, "New task added.", Toast.LENGTH_SHORT).show()
@@ -174,7 +176,7 @@ class AddTaskActivity : AppCompatActivity() {
                 }
             } else if (editingTask()) {
                 val task = Task(idFromBundle, info, currentResponsible ?: "")
-                result = todoDB.update(task)
+                result = taskDB.update(task)
                 if (result > 0) {
                     Log.i(Util.LOG_KEY, "updated to database successfully.\n(AddTaskActivity)")
                 } else {

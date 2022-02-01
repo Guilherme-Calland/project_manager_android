@@ -16,8 +16,9 @@ import com.guilhermecallandprojects.projectmanager.database.MembersDatabaseHelpe
 import com.guilhermecallandprojects.projectmanager.model.Task
 import com.guilhermecallandprojects.projectmanager.utils.Util
 
-class TaskAdapter(private var context: Context, private var taskList: ArrayList<Task>) :
+class TaskAdapter(private var context: Context, private var taskList: ArrayList<Task>, var adapterID: Int) :
     RecyclerView.Adapter<TaskHolder>() {
+
     private var holderList: ArrayList<TaskHolder> = ArrayList()
     private var onPressedObject: OnPressedInterface? = null
     private val memberDB = MembersDatabaseHelper(context)
@@ -40,8 +41,12 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
             if(color!=null){ holder.responsible.setTextColor(getColor(context, color)) }
         }
 
-        holder.deleteButton.setOnClickListener { onPressedObject?.onDelete(position, task) }
-        holder.editButton.setOnClickListener { onPressedObject?.onEdit(position, task) }
+        if(task.id!= null){
+            holder.deleteButton.setOnClickListener { onPressedObject?.onDelete(task.id, adapterID) }
+        } else {
+            Log.e("projectmanagerapp", "A null id was passed for deletion.")
+        }
+        holder.editButton.setOnClickListener { onPressedObject?.onEdit(task, adapterID) }
         holder.task.setOnClickListener { toggleIconsVisibility(holder) }
     }
 
@@ -71,8 +76,9 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
     }
 
     interface OnPressedInterface {
-        fun onDelete(position: Int, model: Task)
-        fun onEdit(position: Int, model: Task)
+        fun onDelete(taskID: Int, adapterID: Int)
+        fun onEdit(task: Task, adapterID: Int)
+        fun onNext(task: Task, adapterID: Int)
     }
 
     fun setOnPressedObject(onPressedObject: OnPressedInterface) {
