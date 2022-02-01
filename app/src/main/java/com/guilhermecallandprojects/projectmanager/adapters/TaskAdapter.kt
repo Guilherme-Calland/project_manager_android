@@ -34,11 +34,15 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
         holder.info.text = task.info
 
         val responsible = memberDB.fetchMember(task.responsible?: "")
+        //TODO: apaga isso
+        Log.i("testing", "${responsible}")
         if(responsible != null){
             holder.responsible.visibility = VISIBLE
             holder.responsible.text = task.responsible
             val color = Util.nameToColor(responsible.color)
             if(color!=null){ holder.responsible.setTextColor(getColor(context, color)) }
+        } else {
+            holder.responsible.visibility = GONE
         }
 
         if(task.id!= null){
@@ -47,6 +51,7 @@ class TaskAdapter(private var context: Context, private var taskList: ArrayList<
             Log.e("projectmanagerapp", "A null id was passed for deletion.")
         }
         holder.editButton.setOnClickListener { onPressedObject?.onEdit(task, adapterID) }
+        holder.nextButton.setOnClickListener{ onPressedObject?.onNext(task, adapterID) }
         holder.task.setOnClickListener { toggleIconsVisibility(holder) }
     }
 

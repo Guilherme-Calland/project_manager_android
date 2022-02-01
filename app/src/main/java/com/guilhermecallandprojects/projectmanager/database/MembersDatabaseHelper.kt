@@ -62,7 +62,6 @@ class MembersDatabaseHelper(context: Context)
         }catch(e: Exception){
             Log.e(Util.LOG_KEY, "error reading database.\n(MembersDatabaseHelper)")
         }
-        Log.i(Util.LOG_KEY, "retrieved data from members database successfully.\n(MembersDatabaseHelper)")
         cursor.close()
         return membersList
     }
@@ -102,7 +101,6 @@ class MembersDatabaseHelper(context: Context)
         } catch(e: Exception) {
             Log.e(Util.LOG_KEY, "reading database error on responsible fetch.\n(TodoDatabaseHelper)")
         }
-        Log.i(Util.LOG_KEY,"retrieved data from todo database successfully on responsible fetch.\n(TodoDatabaseHelper)")
         cursor.close()
         return responsible
     }

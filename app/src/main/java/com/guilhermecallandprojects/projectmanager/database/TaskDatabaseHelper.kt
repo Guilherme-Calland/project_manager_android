@@ -54,7 +54,7 @@ class TaskDatabaseHelper(context: Context, dbName: String) :
                         val id = cursor.getInt(idIndex)
                         val info = cursor.getString(infoIndex)
                         val responsible = cursor.getString(resIndex)
-                        val newTask = Task(id = id, info, responsible)
+                        val newTask = Task(id, info, responsible)
                         taskList.add(newTask)
                     } else {
                         Log.e(Util.LOG_KEY, "error on reading column indexes.\n(TodoDatabaseHelper)")
@@ -65,7 +65,6 @@ class TaskDatabaseHelper(context: Context, dbName: String) :
             Log.e(Util.LOG_KEY, "reading database error.\n(TodoDatabaseHelper)")
         }
 
-        Log.i(Util.LOG_KEY,"retrieved data from todo database successfully.\n(TodoDatabaseHelper)")
         cursor.close()
         return taskList
     }

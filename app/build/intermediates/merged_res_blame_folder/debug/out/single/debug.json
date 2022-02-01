@@ -16,12 +16,12 @@
         "source": "C:\\android_projects\\project_manager_android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\android_projects\\project_manager_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\android_projects\\project_manager_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\android_projects\\project_manager_android\\app\\build\\intermediates\\merged_res\\debug\\layout_member.xml.flat",
         "source": "C:\\android_projects\\project_manager_android\\app\\src\\main\\res\\layout\\member.xml"
+    },
+    {
+        "merged": "C:\\android_projects\\project_manager_android\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\android_projects\\project_manager_android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\android_projects\\project_manager_android\\app\\build\\intermediates\\merged_res\\debug\\drawable_item_background.xml.flat",

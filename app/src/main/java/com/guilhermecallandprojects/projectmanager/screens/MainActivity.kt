@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.guilhermecallandprojects.projectmanager.R
 import com.guilhermecallandprojects.projectmanager.adapters.AdapterBrain as ab
 import com.guilhermecallandprojects.projectmanager.adapters.TaskAdapter
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         rv_doing.adapter = doingAdapter
 
         doneAdapter  = TaskAdapter(this, doneTasks, ab.DONE_ADAPTER_ID)
-        doingAdapter.setOnPressedObject( OnPressedConcreteClass() )
+        doneAdapter.setOnPressedObject( OnPressedConcreteClass() )
         rv_done.adapter = doneAdapter
 
         //databases
@@ -83,11 +84,10 @@ class MainActivity : AppCompatActivity() {
                 else -> null
             }
             if(db!=null){
-                deleteTask(taskID, db)
+                deleteTask(taskID, adapterID, db)
             } else {
                 Log.e("projectmanagerapp", "null database was passed to delete item.\n(MainActivity)")
             }
-            readFromDatabase(adapterID = adapterID)
         }
 
         override fun onEdit(model: Task, adapterID: Int) {
@@ -96,26 +96,43 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onNext(task: Task, adapterID: Int) {
+            var result: Long = 0
             when(adapterID){
-                //TODO: delete item and create in next database
+                ab.TODO_ADAPTER_ID -> {
+                    deleteTask(task.id, ab.TODO_ADAPTER_ID, todoDB)
+                    result = doingDB.create(Task(info= task.info, responsible = task.responsible))
+                    readFromDatabase(adapterID = ab.DOING_ADAPTER_ID)
+                }
+                ab.DOING_ADAPTER_ID -> {
+                    deleteTask(task.id, ab.DOING_ADAPTER_ID, doingDB)
+                    result = doneDB.create(Task(info = task.info, responsible = task.responsible))
+                    readFromDatabase(adapterID = ab.DONE_ADAPTER_ID)
+                }
+            }
+            if(result < 1){
+                Log.e("projectmanagerapp", "problem on switching databases on onNext method.\n(MainActivity)")
             }
         }
     }
 
-    private fun deleteTask(taskID: Int, db: TaskDatabaseHelper) {
-        val result: Int = db.delete(taskID)
-        if (result > 0) {
-            Log.i(Util.LOG_KEY, "element was deleted successfully!\n(MainActivity)")
-            readFromDatabase()
-        } else {
-            Log.e(Util.LOG_KEY, "error on deleting the element.\n(MainActivity)")
+    private fun deleteTask(taskID: Int?, adapterID: Int, db: TaskDatabaseHelper) {
+        if(taskID != null){
+            val result: Int = db.delete(taskID)
+            if (result > 0) {
+                Log.i(Util.LOG_KEY, "element was deleted successfully!\n(MainActivity)")
+                readFromDatabase(adapterID = adapterID)
+            } else {
+                Log.e(Util.LOG_KEY, "error on deleting the element.\n(MainActivity)")
+            }
+        }else{
+            Log.e(Util.LOG_KEY, "a null value was passed to delete the task.\n(MainActivity)")
         }
+
     }
 
     private fun readFromDatabase(query: String = "%", adapterID: Int? = null) {
         if(readingForAll(adapterID)){
             reloadLists(query)
-            notifyAdapters()
         }else{
             reloadList(query, adapterID!!)
         }
@@ -136,14 +153,14 @@ class MainActivity : AppCompatActivity() {
                 doingTasks.clear()
                 val tasksTemp = doingDB.read(query)
                 for(t in tasksTemp){ doingTasks.add(t) }
-                todoAdapter.notifyDataSetChanged()
+                doingAdapter.notifyDataSetChanged()
             }
 
             ab.DONE_ADAPTER_ID -> {
                 doneTasks.clear()
-                val tasksTemp = doingDB.read(query)
+                val tasksTemp = doneDB.read(query)
                 for(t in tasksTemp){ doneTasks.add(t) }
-                todoAdapter.notifyDataSetChanged()
+                doneAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -166,6 +183,8 @@ class MainActivity : AppCompatActivity() {
         for (t in doneTasksTemp) {
             doneTasks.add(t)
         }
+
+        notifyAdapters()
     }
 
     private fun notifyAdapters() {
