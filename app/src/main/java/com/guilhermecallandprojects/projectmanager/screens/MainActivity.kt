@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onEdit(model: Task, adapterID: Int) {
             goToAddTask(model, adapterID)
-            refreshLists(adapterID = adapterID)
+            refreshList(adapterID = adapterID)
         }
 
         override fun onNext(task: Task, adapterID: Int) {
@@ -101,12 +101,12 @@ class MainActivity : AppCompatActivity() {
                 ab.TODO_ADAPTER_ID -> {
                     deleteTask(task.id, ab.TODO_ADAPTER_ID, todoDB)
                     result = doingDB.create(Task(info= task.info, responsible = task.responsible))
-                    refreshLists(adapterID = ab.DOING_ADAPTER_ID)
+                    refreshList(adapterID = ab.DOING_ADAPTER_ID)
                 }
                 ab.DOING_ADAPTER_ID -> {
                     deleteTask(task.id, ab.DOING_ADAPTER_ID, doingDB)
                     result = doneDB.create(Task(info = task.info, responsible = task.responsible))
-                    refreshLists(adapterID = ab.DONE_ADAPTER_ID)
+                    refreshList(adapterID = ab.DONE_ADAPTER_ID)
                 }
             }
 
@@ -121,12 +121,12 @@ class MainActivity : AppCompatActivity() {
                 ab.DOING_ADAPTER_ID -> {
                     deleteTask(task.id, ab.DOING_ADAPTER_ID, doingDB)
                     result = todoDB.create(Task(info = task.info, responsible = task.responsible))
-                    refreshLists(adapterID = ab.TODO_ADAPTER_ID)
+                    refreshList(adapterID = ab.TODO_ADAPTER_ID)
                 }
                 ab.DONE_ADAPTER_ID -> {
                     deleteTask(task.id, ab.DONE_ADAPTER_ID, doneDB)
                     result = doingDB.create(Task(info = task.info, responsible = task.responsible))
-                    refreshLists(adapterID = ab.DOING_ADAPTER_ID)
+                    refreshList(adapterID = ab.DOING_ADAPTER_ID)
                 }
             }
 
@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
             val result: Int = db.delete(taskID)
             if (result > 0) {
                 Log.i(Util.LOG_KEY, "element was deleted successfully!\n(MainActivity)")
-                refreshLists(adapterID = adapterID)
+                refreshList(adapterID = adapterID)
             } else {
                 Log.e(Util.LOG_KEY, "error on deleting the element.\n(MainActivity)")
             }
@@ -151,17 +151,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun refreshLists(query: String = "%", adapterID: Int? = null) {
-        if(readingForAll(adapterID)){
-            refreshAllLists(query)
-        }else{
-            refreshList(query, adapterID!!)
-        }
-    }
-
-    private fun readingForAll(adapterID: Int?) = adapterID == null
-
-    private fun refreshList(query: String, adapterID: Int){
+    private fun refreshList(query: String= "%", adapterID: Int){
         when(adapterID){
             ab.TODO_ADAPTER_ID -> {
                 todoTasks.clear()
@@ -186,7 +176,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun refreshAllLists(query: String) {
+    private fun refreshLists(query: String = "%") {
         todoTasks.clear()
         val todoTasksTemp = todoDB.read(query)
         for (t in todoTasksTemp) {
@@ -235,7 +225,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-                refreshAllLists(query)
+                refreshLists(query)
                 return false
             }
         })
